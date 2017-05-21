@@ -96,6 +96,7 @@ public class InicioActivity extends AppCompatActivity {
         int children = 0;
         String ages = "1,3";
         Boolean go =true;
+        String rojo='proenfjki';
 
         Service service = retrofit.create(Service.class);
         service.ObtenerListaHotel("Bearer " + AppState.accessToken,Environment,iata,refPoint,checkIn,checkOut,rooms,adults,children,go).enqueue(new Callback<Hotel>() {
