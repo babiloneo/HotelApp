@@ -1,5 +1,8 @@
 package itesloscabos.com.hotelapp.Models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by croni on 19/05/2017.
  */
@@ -16,6 +19,17 @@ public class hotelResult {
     private String phone;
     private int category;
     private String fax;
+    private List<indexImagenes> images;
+
+    public List<indexImagenes> getImages() {
+        return images;
+    }
+
+    public void setImages(List<indexImagenes> images) {
+        this.images = images;
+    }
+
+
 
     public String getPropertyNumber() {
         return propertyNumber;

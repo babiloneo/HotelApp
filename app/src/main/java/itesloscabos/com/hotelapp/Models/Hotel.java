@@ -2,6 +2,7 @@ package itesloscabos.com.hotelapp.Models;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Hotel {
 
@@ -9,13 +10,13 @@ public class Hotel {
     private String processTime;
     private Boolean cachedResponse;
     private Boolean success;
-    private ArrayList<hotelResult>result;
+    private List<hotelResult>result;
 
-    public ArrayList<hotelResult> getResult() {
+    public List<hotelResult> getResult() {
         return result;
     }
 
-    public void setResult(ArrayList<hotelResult> result) {
+    public void setResult(List<hotelResult> result) {
         this.result = result;
     }
 

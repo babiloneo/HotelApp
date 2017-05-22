@@ -1,15 +1,19 @@
 package itesloscabos.com.hotelapp;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import itesloscabos.com.hotelapp.Models.AppState;
 import itesloscabos.com.hotelapp.Models.Hotel;
-import itesloscabos.com.hotelapp.Models.HotelRespuesta;
-import itesloscabos.com.hotelapp.Models.Login;
 import itesloscabos.com.hotelapp.Models.LoginRespuesta;
 import itesloscabos.com.hotelapp.Models.hotelResult;
 import retrofit2.Call;
@@ -22,15 +26,69 @@ public class InicioActivity extends AppCompatActivity {
 
     private Retrofit retrofit;
     private static final String TAG = "PRUEBA";
-
+    Button tarifas;
+    private Button secion;
+    private EditText destino;
+    private EditText llegada;
+    private EditText salida;
+    private TextView cuartos;
+    private TextView Adultos;
+    private TextView ninos;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inicio);
 
-        ObtenerDatosLogin();
+        secion=(Button)findViewById(R.id.textView);
+        tarifas=(Button) findViewById(R.id.ver_tarifas);
+        destino=(EditText)findViewById(R.id.txt_destino);
+        llegada=(EditText)findViewById(R.id.txt_llegada);
+        salida= (EditText)findViewById(R.id.txt_salida);
+        cuartos=(TextView)findViewById(R.id.txt_habitacion);
+        Adultos=(TextView)findViewById(R.id.txt_adultos);
+        ninos=(TextView)findViewById(R.id.txt_ninos);
+
+       // ObtenerDatosLogin();
+        iniciar_secion();
+        mostrarTarifas();
     }
 
+    public void mostrarTarifas(){
+
+
+        tarifas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(AppState.accessToken=="")
+                {
+                    Toast.makeText(getApplicationContext(), "Inicie su secion", Toast.LENGTH_SHORT).show();
+                }else{
+                    Intent nextViewIndex = new Intent(InicioActivity.this,IndexActivity.class);
+                    Bundle datos = new Bundle();
+                    datos.putString("destino",destino.getText().toString());
+                    datos.putString("llegada",llegada.getText().toString());
+                    datos.putString("salida",salida.getText().toString());
+                    datos.putString("cuartos",cuartos.getText().toString());
+                    datos.putString("adultos",Adultos.getText().toString());
+                    datos.putString("ninos",ninos.getText().toString());
+                    nextViewIndex.putExtras(datos);
+                    startActivity(nextViewIndex);
+                }
+
+            }
+        });
+    }
+
+    public void iniciar_secion(){
+        secion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                ObtenerDatosLogin();
+
+            }
+        });
+    }
 
     private void ObtenerDatosLogin()
     {
@@ -57,15 +115,14 @@ public class InicioActivity extends AppCompatActivity {
                     String userName = response.body().getUserName();
                     String issued = response.body().getIssued();
                     String expires = response.body().getExpires();
-                    int f=2323;
                     AppState.accessToken = response.body().getAccessToken();
 
 
 
                     Log.i(TAG,"Hoteles"+"access_token: "+access_token+"\n"+"token_type:"+token_type+"/n"+"expires_in:"+expires_in
                             +"\n"+"userName:"+userName+"\n"+"issued:"+issued+"\n"+"expires:"+expires);
+                    Toast.makeText(getApplicationContext(), "Secion Iniciada", Toast.LENGTH_SHORT).show();
 
-                    obtenerDatosIndex();
                 }else
                 {
                     Log.e(TAG, "onResponse: "+response.errorBody());
@@ -83,47 +140,4 @@ public class InicioActivity extends AppCompatActivity {
         });
     }
 
-    private void obtenerDatosIndex(){
-
-       // String Authorization = "bearer SqEB0uHh9_1vTNHPIAE8DeJfmrQx4mbY7fqK1VAmDta1SNXQ-hMMEjbwxu3uMhUMKW0cmYH6wkaM3TVqd2b9Wl8G91s-SIQtApTIBtVVrQf0_gtHMTgjn0kZUjpzXaYORCu9ThfNEVj482e_230RRu1OeLzUImnzDC-1JduNSp58Tr8cyRLrzTtGydO7AgNdSSKaXpDsAiZp7umz5d18goHfuEvoIYQIOjmAnfnQDfhKbNmnx_lGj32oeswOIXdc2upoC1icCDyCavVyRjDB0AC2K0fWVqZ4MmlYGO2gMCYdpGskC-U4YZYjTbBdcE3FcvdUJ8UeHcRpeghS8_Q9nOi13hCUgOk_r92cF3ii2dHrTyIOTGH8KdzabK8PkWdza38mkgC7SAFe9yBNqvpvt5s1J3JvGzK-DyGTX7Yj1NEzOTqK2kJM5zrKg96US9fGHrmznsn-iSE2SuXOjcBhiiBWXcIz1xJSi2Xej8Ys2WMpYnuwGR7zzfm9zGIMPdRuqeG9XJusnBE4YAnNfZ5rTw";
-        String Environment ="TEST";
-        String iata = "VER";
-        String refPoint = "Veracruz";
-        String checkIn = "20170513";
-        String checkOut = "20170520";
-        int rooms = 1;
-        int adults = 1;
-        int children = 0;
-        String ages = "1,3";
-        Boolean go =true;
-        String rojo='proenfjki';
-
-        Service service = retrofit.create(Service.class);
-        service.ObtenerListaHotel("Bearer " + AppState.accessToken,Environment,iata,refPoint,checkIn,checkOut,rooms,adults,children,go).enqueue(new Callback<Hotel>() {
-            @Override
-            public void onResponse(Call<Hotel> call, Response<Hotel> response) {
-                int x = response.body().getCount();
-                String y = response.body().getProcessTime();
-                Boolean z = response.body().getCachedResponse();
-                Boolean a = response.body().getSuccess();
-
-                if(response.isSuccessful()){
-                    Log.i(TAG,"Hoteles"+x+" "+y+" "+z+" "+a);
-                  //  Hotel result = response.body();
-                    ArrayList<hotelResult> indexResult =response.body().getResult();
-                    for(int i=0;i<indexResult.size();i++){
-                        hotelResult p =indexResult.get(i);
-                        Log.i(TAG,"Hoteles"+p.getCountry()+","+p.getCity()+","+p.getName()+"/n");
-                    }
-                }else{
-                    Log.e(TAG, "onResponse: "+response.errorBody());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Hotel> call, Throwable t) {
-                Log.e(TAG, "onFailure: "+t.getMessage());
-            }
-        });
-           }
 }
