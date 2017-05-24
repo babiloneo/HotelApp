@@ -153,7 +153,7 @@
                 android:weightSum="4">
 
                 <TextView
-                    android:id="txv_nombre"
+                    android:id="@+id/txv_nombre"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
@@ -236,16 +236,102 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:weightSum="1"
+            android:gravity="center"
             android:orientation="horizontal">
 
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.6"
+                android:orientation="vertical"
+                android:paddingLeft="15dp"
+                android:weightSum="3">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:text="Tarifa Estandar"
+                    android:layout_marginTop="15dp"
+                    android:textSize="15sp"
+                    android:layout_weight="1"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:text=" 836.36 MXN"
+                    android:textColor="#000"
+                    android:textSize="15sp"
+                    android:layout_weight="1"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:text=" Iva Incluido"
+                    android:textSize="12sp"
+                    android:layout_weight="1"/>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAllCaps="false"
+                android:layout_margin="15dp"
+                android:background="@drawable/button_bg_stroke"
+                android:layout_weight="0.4"
+                android:text="Reservar"
+                />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:weightSum="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.6"
+                android:orientation="vertical"
+                android:paddingLeft="15dp"
+                android:weightSum="3">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:text="Plan Europeo"
+                    android:layout_marginTop="15dp"
+                    android:textSize="15sp"
+                    android:layout_weight="1"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:text=" 925.00 MXN"
+                    android:textColor="#000"
+                    android:textSize="15sp"
+                    android:layout_weight="1"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:text=" Iva Incluido"
+                    android:textSize="12sp"
+                    android:layout_weight="1"/>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/buttonn2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAllCaps="false"
+                android:layout_margin="15dp"
+                android:background="@drawable/button_bg_stroke"
+                android:layout_weight="0.4"
+                android:text="Reservar"
+                />
 
         </LinearLayout>
     </LinearLayout>

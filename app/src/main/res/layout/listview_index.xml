@@ -60,12 +60,14 @@
 
     </LinearLayout>
 
-    <ImageView
+    <ImageButton
+        android:id="@+id/btn_descripcion"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:layout_marginTop="40dp"
         android:layout_weight="0.1"
-        android:src="@drawable/ic_chevron_right_black_24dp"/>
+        android:background="@android:color/transparent"
+        android:gravity="center"
+        android:src="@drawable/ic_chevron_right_black_24dp" />
 
 </LinearLayout>

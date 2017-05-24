@@ -1,8 +1,11 @@
 package itesloscabos.com.hotelapp;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,6 +33,7 @@ public class IndexActivity extends AppCompatActivity {
     List<hotelResult> indexResult;
     IndexAdapter adapter;
     ListView listaHoteles;
+    ImageView descripcion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +43,11 @@ public class IndexActivity extends AppCompatActivity {
         obtenerDatosIndex();
         TextView fechas=(TextView)findViewById(R.id.txt_fechas);
         TextView persona=(TextView)findViewById(R.id.textView10);
+        //Envia los titulos a la ventana index
         fechas.setText(getIntent().getStringExtra("fechas"));
         persona.setText(getIntent().getStringExtra("personas"));
+
+        //ir ala siguiente venta de sdecripcion del hotel seleccionado
     }
 
     private void obtenerDatosIndex(){

@@ -1,6 +1,7 @@
 package itesloscabos.com.hotelapp.HotelAPi;
 import itesloscabos.com.hotelapp.Models.Hotel;
 import itesloscabos.com.hotelapp.Models.LoginRespuesta;
+import itesloscabos.com.hotelapp.Models.descripcion;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -24,4 +25,8 @@ public interface Service {
                                   @Query("checkIn") String checkIn, @Query("checkOut") String checkOut,
                                   @Query("rooms") String rooms, @Query("adults") String adults,
                                   @Query("children") String children);
+    @GET("v1/Hotel/Description")
+    Call<descripcion> getDescripciones(@Header("Authorization") String token,
+                                    @Header("X-Environment") String Environment,
+                                    @Query("propertyNumber") String propertyNumber);
 }
