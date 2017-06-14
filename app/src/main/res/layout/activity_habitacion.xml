@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="1"
-    tools:context="itesloscabos.com.hotelapp.descripActivity">
+    tools:context="itesloscabos.com.hotelapp.HabitacionActivity">
+
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -45,7 +46,7 @@
                 android:layout_marginStart="50dp"
                 android:gravity="center"
                 android:padding="10dp"
-                android:text="Detalle del Hotel"
+                android:text="Habitacion Estandar"
                 android:textColor="#fff"
                 android:textSize="20sp"
                 tools:ignore="MissingPrefix" />
@@ -64,68 +65,7 @@
         android:orientation="vertical"
         android:weightSum="7">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.5"
-            android:background="#EDDD02"
-            android:orientation="horizontal"
-            android:weightSum="1">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0.5"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:weightSum="1">
-
-                <TextView
-                    android:id="@+id/desc_fechas"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.8"
-                    android:text=""
-                    android:textSize="12dp" />
-
-                <ImageView
-                    android:id="@+id/txt_personas"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/ic_chevron_right_black_24dp" />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0.5"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:weightSum="1">
-
-                <TextView
-                    android:id="@+id/desc_personas"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.8"
-                    android:text=""
-                    android:textSize="12dp" />
-
-                <ImageView
-                    android:id="@+id/imageButton3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/ic_chevron_right_black_24dp" />
-
-            </LinearLayout>
-
-        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -139,13 +79,13 @@
                 android:layout_height="fill_parent">
 
                 <android.support.v4.view.ViewPager
-                    android:id="@+id/viewPage2"
+                    android:id="@+id/viewPage3"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     />
 
                 <LinearLayout
-                    android:id="@+id/SliderDota2"
+                    android:id="@+id/SliderDota3"
                     android:gravity="center_vertical|center_horizontal"
                     android:orientation="horizontal"
                     android:layout_width="wrap_content"
@@ -163,7 +103,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1.4"
+            android:layout_weight="1.9"
             android:gravity="center"
             android:orientation="horizontal"
             android:weightSum="10">
@@ -171,66 +111,27 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="8"
+                android:layout_weight="10"
                 android:orientation="vertical"
                 android:padding="15dp"
-                android:weightSum="4">
+                android:weightSum="1">
 
                 <TextView
                     android:id="@+id/txv_nombre"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
+                    android:textSize="16sp"
                     android:layout_weight="1"
-                    android:lines="1"
-                    android:text="Mision Merida Panamericana"
-                    android:textColor="#33A5FF"
+                    android:text="Las habitaciones son la fucion perfecta entre
+confor y calidez. Cuenta con aire acondicionado,
+televicion, sistema de cable y llaves electronicas.
+Cada una de ellas esta armonizada con
+amenidades 100% naturales hechas a base
+de chocolate"
                     />
 
-                <TextView
-                    android:id="@+id/txv_direccion"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:lines="1"
-                    android:text="Calle 59 N455, Centro, Merida, Yucatan, cp970" />
-
-                <TextView
-                    android:id="@+id/txv_ciudad"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:lines="1"
-                    android:text="Merida, Yucatan"/>
-
-                <RatingBar
-                    android:id="@+id/des_estrellas"
-                    style="?android:attr/ratingBarStyleSmall"
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:fontFamily="roboto"
-                    android:isIndicator="true"
-                    android:rating="3"
-                    android:progressTint="@color/colorPrimary"
-                    android:numStars="5"
-                    android:stepSize="1"
-                    android:textSize="20sp" />
 
             </LinearLayout>
-
-            <Button
-                android:id="@+id/desc_mapa"
-                android:layout_width="0dp"
-                android:layout_height="30dp"
-                android:layout_weight="1.5"
-                android:text="515Km"
-                android:textSize="10sp" />
-
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:src="@drawable/ic_chevron_right_black_24dp" />
 
 
         </LinearLayout>
@@ -239,7 +140,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.5"
-            android:background="#6A6A6A"
+            android:background="#f2f2f2"
             android:gravity="center"
             android:orientation="horizontal"
 
@@ -251,15 +152,9 @@
                 android:layout_marginStart="15dp"
                 android:layout_weight="0.8"
                 android:text="Habitacion Estandar"
-                android:textAlignment="textStart"
-                android:textColor="#fff" />
+                android:textAlignment="textStart" />
 
-            <ImageView
-                android:id="@+id/desc_habitacion"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.2"
-                android:src="@drawable/ic_chevron_right_black_24dp" />
+
 
         </LinearLayout>
 
@@ -267,9 +162,9 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
+            android:weightSum="1"
             android:gravity="center"
-            android:orientation="horizontal"
-            android:weightSum="1">
+            android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -282,26 +177,24 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_weight="1"
                     android:text="Tarifa Estandar"
-                    android:textSize="15sp" />
-
+                    android:layout_marginTop="15dp"
+                    android:textSize="15sp"
+                    android:layout_weight="1"/>
                 <TextView
-                    android:id="@+id/desc_estandar"
+                    android:id="@+id/habi_estandar"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="1"
                     android:text=" 836.36 MXN"
                     android:textColor="#000"
-                    android:textSize="15sp" />
-
+                    android:textSize="15sp"
+                    android:layout_weight="1"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="1"
                     android:text=" Iva Incluido"
-                    android:textSize="12sp" />
+                    android:textSize="12sp"
+                    android:layout_weight="1"/>
 
             </LinearLayout>
 
@@ -342,7 +235,7 @@
                     android:textSize="15sp" />
 
                 <TextView
-                    android:id="@+id/desc_europeo"
+                    android:id="@+id/habi_europeo"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
@@ -371,5 +264,6 @@
 
         </LinearLayout>
     </LinearLayout>
+
 
 </LinearLayout>

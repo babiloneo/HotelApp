@@ -2,72 +2,90 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
-    android:weightSum="1">
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="0dp"
-        android:layout_height="120dp"
-        android:layout_weight="0.3"
-        android:scaleType="fitXY"
-        android:src="@drawable/googleg_standard_color_18" />
+    android:orientation="vertical">
 
     <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_weight="0.6"
-        android:padding="10dp">
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="horizontal"
+        android:weightSum="1">
 
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_weight="0.27"
+            android:scaleType="fitXY"
+            android:src="@drawable/googleg_standard_color_18" />
 
-        <TextView
-            android:id="@+id/nombre"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textSize="22sp"
-            android:inputType="text"
-            android:textColor="#33A5FF"
-            android:fontFamily="roboto"
-            android:text="ux Resort Maya" />
+            android:layout_weight="0.6"
+            android:orientation="vertical"
+            android:padding="2dp"
+            android:weightSum="10">
 
-        <TextView
-            android:id="@+id/direccion"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:inputType="text"
-            android:fontFamily="roboto"
-            android:text="Carretera merida Camp " />
 
-        <TextView
-            android:id="@+id/estrellas"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:fontFamily="roboto"
-            android:text="*****" />
+            <TextView
+                android:id="@+id/nombre"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2.5"
+                android:fontFamily="roboto"
+                android:lines="1"
+                android:text="ux Resort Maya"
+                android:textColor="#33A5FF"
+                android:textSize="18sp" />
 
-        <TextView
-            android:id="@+id/precio"
-            android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/direccion"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2.5"
+                android:fontFamily="roboto"
+                android:lines="1"
+                android:text="Carretera merida Camp "
+                android:textSize="16sp" />
+
+            <RatingBar
+                android:id="@+id/estrellas"
+                style="?android:attr/ratingBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="2.5"
+                android:fontFamily="roboto"
+                android:isIndicator="true"
+                android:progressTint="@color/colorPrimary"
+                android:numStars="5"
+                android:rating="3"
+                android:stepSize="1"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/precio"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2.5"
+                android:fontFamily="roboto"
+                android:lines="1"
+                android:text=""
+                android:textColor="#000"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/btn_descripcion"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textSize="22sp"
-            android:textColor="#000"
-            android:inputType="text"
-            android:fontFamily="roboto"
-            android:text="626.25 MXN" />
+            android:layout_marginTop="40dp"
+            android:layout_weight="0.1"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:src="@drawable/ic_chevron_right_black_24dp" />
+
 
     </LinearLayout>
-
-    <ImageButton
-        android:id="@+id/btn_descripcion"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_weight="0.1"
-        android:background="@android:color/transparent"
-        android:gravity="center"
-        android:src="@drawable/ic_chevron_right_black_24dp" />
 
 </LinearLayout>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    app:layout_collapseParallaxMultiplier="1.0">
+
+    <LinearLayout
+        android:layout_width="280dp"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:weightSum="1">
+
+        <ImageView
+            android:id="@+id/inf_imagen"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:scaleType="centerCrop"
+            android:src="@drawable/hotel" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.6"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="5dp"
+            android:weightSum="2">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <TextView
+                    android:id="@+id/inf_nombre"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1.4"
+                    android:inputType="text"
+                    android:text="Mision Merida Panama"
+                    android:textColor="#000"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/inf_precio"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.6"
+                    android:text="836MXN"
+                    android:textColor="#33A5FF"
+                    android:textSize="14dp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/inf_direccion"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:inputType="text"
+                android:text="Calle 59 NO.566,centro,merida "
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_chevron_right_black_24dp"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>

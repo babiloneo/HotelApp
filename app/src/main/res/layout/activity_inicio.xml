@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="1"
     tools:context="itesloscabos.com.hotelapp.InicioActivity"
     >
 
@@ -13,435 +14,443 @@
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar1"
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
             android:minHeight="?attr/actionBarSize"
             tools:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             tools:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-            <GridLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
 
-                <Button
-                    android:id="@+id/textView"
-                    android:layout_width="160dp"
-                    android:layout_height="wrap_content"
-                    android:layout_column="17"
-                    android:layout_row="0"
-                    android:layout_weight="1"
-                    android:background="@android:color/transparent"
-                    android:text="Iniciar Sersión" />
-            </GridLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="1"
+                android:gravity="end"
+                >
+
+            </LinearLayout>
+
 
         </android.support.v7.widget.Toolbar>
+
     </android.support.design.widget.AppBarLayout>
 
     <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="?attr/actionBarSize"
-        android:layout_weight="8"
-        android:background="#0AB3C0"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/fondo3"
+        android:gravity="end|bottom"
         android:orientation="vertical"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:paddingTop="10dp"
+        android:weightSum="7">
 
-        android:weightSum="4">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="2.59"
-            android:orientation="horizontal">
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.77"
+            android:layout_height="0dp"
+            android:layout_weight="4"
             android:orientation="vertical"
-            android:weightSum="1">
-
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="roboto"
-                android:text="Destino"
-                android:textColor="#fff" />
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="10dp"
+            android:weightSum="4">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.2"
-                android:background="#fff"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:weightSum="1"
-                >
+                android:layout_height="0dp"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:weightSum="1">
 
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.2"
-                    android:background="@android:color/transparent"
-                    android:src="@drawable/ic_search_black_24dp"/>
-
-                <EditText
-                    android:id="@+id/txt_destino"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.8"
-                    android:background="#fff"
-                    android:ems="10"
-                    android:hint="Nombre del destino"
-                    android:inputType="text"
-                    android:text="Veracruz" />
-
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-
-            android:weightSum="1">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="10dp"
-                android:layout_weight="0.2"
-                android:orientation="horizontal"
-                android:weightSum="2">
 
                 <TextView
-                    android:id="@+id/textView3"
+                    android:id="@+id/textView2"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.4"
                     android:fontFamily="roboto"
-                    android:text="Llegada"
+                    android:text="Destino"
                     android:textColor="#fff" />
-
-                <TextView
-                    android:id="@+id/textView4"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="12dp"
-                    android:layout_weight="1"
-                    android:fontFamily="roboto"
-                    android:text="Salida"
-                    android:textColor="#fff" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0.8"
-                android:orientation="horizontal"
-                android:weightSum="2">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_marginRight="12dp"
-                    android:layout_weight="1"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.6"
                     android:background="#fff"
                     android:gravity="center"
                     android:orientation="horizontal"
                     android:weightSum="1">
 
-
-                    <ImageButton
-                        android:id="@+id/picDate"
+                    <ImageView
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.3"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.2"
                         android:background="@android:color/transparent"
-                        android:onClick="calendario1"
-                        android:src="@drawable/ic_date_range_black_24dp" />
+                        android:src="@drawable/ic_search_black_24dp" />
+
+                    <EditText
+                        android:id="@+id/txt_destino"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.8"
+                        android:background="#fff"
+                        android:ems="10"
+                        android:text="LA Habana"
+                        android:hint="Nombre del destino"
+                        android:inputType="text" />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.4"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
 
                     <TextView
-                        android:id="@+id/txt_llegada"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/picDate"
-                        android:layout_weight="0.7"
-                        android:ems="10"
-                        android:textSize="16dp" />
+                        android:id="@+id/textView3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="12dp"
+                        android:layout_weight="1"
+
+                        android:fontFamily="roboto"
+                        android:text="Llegada"
+                        android:textColor="#fff" />
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="match_parent"
+                        android:layout_height="29dp"
+                        android:layout_marginLeft="12dp"
+                        android:fontFamily="roboto"
+                        android:text="Salida"
+                        android:textColor="#fff" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="12dp"
-                    android:layout_weight="1"
-                    android:background="#fff"
-                    android:gravity="center"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.6"
                     android:orientation="horizontal"
-                    android:weightSum="1">
+                    android:weightSum="2">
 
-                    <ImageButton
-                        android:id="@+id/picDate2"
+                    <LinearLayout
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.3"
-                        android:background="@android:color/transparent"
-                        android:onClick="calendario2"
-                        android:src="@drawable/ic_date_range_black_24dp" />
-
-                    <TextView
-                        android:id="@+id/txt_salida"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/picDate2"
-                        android:layout_weight="0.7"
-                        android:ems="10"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="12dp"
+                        android:layout_weight="1"
+                        android:background="#fff"
                         android:gravity="center"
-                        android:textSize="16dp" />
-                </LinearLayout>
+                        android:orientation="horizontal"
+                        android:weightSum="1">
 
 
-            </LinearLayout>
+                        <ImageButton
+                            android:id="@+id/picDate"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.3"
+                            android:background="@android:color/transparent"
+                            android:onClick="calendario1"
+                            android:src="@drawable/ic_date_range_black_24dp" />
 
+                        <TextView
+                            android:id="@+id/txt_llegada"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/picDate"
+                            android:layout_weight="0.7"
+                            android:ems="10"
+                            android:textSize="16dp" />
 
-        </LinearLayout>
+                    </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="51dp"
-            android:layout_weight="0.48"
-            android:orientation="horizontal"
-            android:weightSum="1">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginRight="10dp"
-                android:layout_weight="0.33"
-                android:orientation="vertical"
-                android:weightSum="1">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:layout_weight="0.25"
-                    android:fontFamily="roboto"
-                    android:text="Habitaciones"
-                    android:textColor="#fff" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="36dp"
-                    android:orientation="horizontal"
-                    android:weightSum="1">
-
-                    <ImageView
-                        android:id="@+id/ha_rem"
-                        android:layout_width="match_parent"
+                    <LinearLayout
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="0.33"
-                        android:background="#DBDC1F"
-                        android:src="@drawable/ic_remove_black" />
-
-                    <EditText
-                        android:id="@+id/txt_habitacion"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.33"
+                        android:layout_marginLeft="12dp"
+                        android:layout_weight="1"
                         android:background="#fff"
-                        android:enabled="false"
-                        android:inputType="number"
-                        android:text="1"
-                        android:textAlignment="center" />
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:weightSum="1">
 
-                    <ImageView
+                        <ImageButton
+                            android:id="@+id/picDate2"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.3"
+                            android:background="@android:color/transparent"
+                            android:onClick="calendario2"
+                            android:src="@drawable/ic_date_range_black_24dp" />
 
-                        android:id="@+id/ha_add"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.33"
-                        android:background="#DBDC1F"
+                        <TextView
+                            android:id="@+id/txt_salida"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/picDate2"
+                            android:layout_weight="0.7"
+                            android:ems="10"
+                            android:gravity="center"
+                            android:textSize="16dp" />
+                    </LinearLayout>
 
-                        android:src="@drawable/ic_add_black_24dp"
-                        android:text="+" />
+
                 </LinearLayout>
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_weight="0.33"
-                android:orientation="vertical"
-                android:weightSum="1">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"
-                    android:layout_weight="0.25"
-                    android:fontFamily="roboto"
-                    android:text="Adultos"
-                    android:textColor="#fff" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="36dp"
-                    android:orientation="horizontal"
-                    android:weightSum="1">
-
-                    <ImageView
-                        android:id="@+id/ad_rem"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.33"
-                        android:background="#DBDC1F"
-                        android:src="@drawable/ic_remove_black" />
-
-                    <EditText
-                        android:id="@+id/txt_adultos"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.33"
-                        android:background="#fff"
-                        android:enabled="false"
-                        android:inputType="number"
-                        android:text="1"
-                        android:textAlignment="center" />
-
-                    <ImageView
-                        android:id="@+id/ad_add"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.33"
-                        android:background="#DBDC1F"
-                        android:src="@drawable/ic_add_black_24dp" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="05dp"
-                android:layout_weight="0.34"
-                android:orientation="vertical"
-                android:weightSum="1">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.3"
-                    android:fontFamily="roboto"
-                    android:text="Niños"
-                    android:textColor="#fff" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="36dp"
-                    android:orientation="horizontal"
-                    android:weightSum="1">
-
-                    <ImageView
-                        android:id="@+id/ni_rem"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.33"
-                        android:background="#DBDC1F"
-                        android:src="@drawable/ic_remove_black" />
-
-                    <EditText
-                        android:id="@+id/txt_ninos"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.33"
-                        android:background="#fff"
-                        android:enabled="false"
-                        android:inputType="number"
-                        android:text="0"
-                        android:textAlignment="center" />
-
-                    <ImageView
-                        android:id="@+id/ni_add"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.33"
-                        android:background="#DBDC1F"
-                        android:src="@drawable/ic_add_black_24dp" />
-                </LinearLayout>
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-
-            <Button
-                android:id="@+id/ver_tarifas"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#DBDC1F"
-                android:text="Ver Tarifas" />
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="363dp"
-            android:layout_height="55dp"
-            android:background="#0AB3C0"
-            android:orientation="horizontal"
-            android:weightSum="1">
-
-            <ImageButton
-                android:id="@+id/imageButton3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentStart="true"
-                android:layout_marginStart="15dp"
-                android:layout_weight="0.4"
-                android:visibility="invisible"
-                app:srcCompat="@mipmap/ic_launcher_round" />
-
-            <ImageButton
-                android:id="@+id/imageButton4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="13dp"
-                android:layout_toEndOf="@+id/imageButton3"
-                android:layout_weight="0.4"
-                android:visibility="invisible"
-                app:srcCompat="@mipmap/ic_launcher_round" />
-
-            <ImageButton
-                android:id="@+id/imageButton5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="14dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:layout_marginTop="10dp"
-                android:layout_weight="0.2"
-                app:srcCompat="@mipmap/ic_action_settings" />
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="0.33"
+                    android:orientation="vertical"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.4"
+                        android:layout_marginTop="2dp"
+                        android:fontFamily="roboto"
+                        android:text="Habitaciones"
+                        android:textColor="#fff" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.6"
+                        android:orientation="horizontal"
+                        android:weightSum="1">
+
+                        <ImageView
+                            android:id="@+id/ha_rem"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.33"
+                            android:background="#DBDC1F"
+                            android:src="@drawable/ic_remove_black" />
+
+                        <EditText
+                            android:id="@+id/txt_habitacion"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.33"
+                            android:background="#fff"
+                            android:enabled="false"
+                            android:text="1"
+                            android:textAlignment="center" />
+
+                        <ImageView
+
+                            android:id="@+id/ha_add"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.33"
+                            android:background="#DBDC1F"
+                            android:src="@drawable/ic_add_black_24dp"
+                            android:text="+" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="0.33"
+                    android:orientation="vertical"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="0.4"
+                        android:fontFamily="roboto"
+                        android:text="Adultos"
+                        android:textColor="#fff" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.6"
+                        android:orientation="horizontal"
+                        android:weightSum="1">
+
+                        <ImageView
+                            android:id="@+id/ad_rem"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.33"
+                            android:background="#DBDC1F"
+                            android:src="@drawable/ic_remove_black" />
+
+                        <EditText
+                            android:id="@+id/txt_adultos"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.33"
+                            android:background="#fff"
+                            android:enabled="false"
+                            android:text="1"
+                            android:textAlignment="center" />
+
+                        <ImageView
+                            android:id="@+id/ad_add"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.33"
+                            android:background="#DBDC1F"
+                            android:src="@drawable/ic_add_black_24dp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="05dp"
+                    android:layout_weight="0.34"
+                    android:orientation="vertical"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.4"
+                        android:fontFamily="roboto"
+                        android:text="Niños"
+                        android:textColor="#fff" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.6"
+                        android:orientation="horizontal"
+                        android:weightSum="1">
+
+                        <ImageView
+                            android:id="@+id/ni_rem"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.33"
+                            android:background="#DBDC1F"
+                            android:src="@drawable/ic_remove_black" />
+
+                        <EditText
+                            android:id="@+id/txt_ninos"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.33"
+                            android:background="#fff"
+                            android:enabled="false"
+                            android:text="0"
+                            android:textAlignment="center" />
+
+                        <ImageView
+                            android:id="@+id/ni_add"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.33"
+                            android:background="#DBDC1F"
+                            android:src="@drawable/ic_add_black_24dp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="15dp"
+                android:layout_weight="1">
+
+
+                <Button
+                    android:id="@+id/ver_tarifas"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#DBDC1F"
+                    android:text="Ver Tarifas" />
+
+            </LinearLayout>
+
+
+
         </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.7"
+            android:orientation="horizontal"
+            android:background="@drawable/redondeo"
+            android:weightSum="10"
+            >
+
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_loyalty"/>
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_local_hotel"/>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="4">
+
+            </LinearLayout>
+
+            <ImageButton
+                android:foregroundGravity="right"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_settings"/>
+
+        </LinearLayout>
+
 
     </LinearLayout>
-
-</android.support.design.widget.CoordinatorLayout>
+</LinearLayout>

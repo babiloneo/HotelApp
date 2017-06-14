@@ -20,6 +20,24 @@ public class hotelResult {
     private int category;
     private String fax;
     private List<indexImagenes> images;
+    private float total;
+    private float total2;
+
+    public float getTotal2() {
+        return total2;
+    }
+
+    public void setTotal2(float total2) {
+        this.total2 = total2;
+    }
+
+    public float getTotal() {
+        return total;
+    }
+
+    public void setTotal(float total) {
+        this.total = total;
+    }
 
     public List<indexImagenes> getImages() {
         return images;

@@ -16,8 +16,11 @@ import android.widget.Toast;
 import android.app.DatePickerDialog;
 
 import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.StringTokenizer;
 
@@ -35,6 +38,7 @@ public class InicioActivity extends AppCompatActivity implements DatePickerDialo
 
     private Retrofit retrofit;
     private static final String TAG = "PRUEBA";
+    public static int dato=0;
     Button tarifas;
     private Button secion;
     private EditText destino;
@@ -44,15 +48,14 @@ public class InicioActivity extends AppCompatActivity implements DatePickerDialo
     private TextView Adultos;
     private TextView ninos;
     TextView calendario;
-    String txt_llegada,txt_salida;
 
-    ImageView menos;
+    int pssicion;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inicio);
 
-        secion=(Button)findViewById(R.id.textView);
         tarifas=(Button) findViewById(R.id.ver_tarifas);
         destino=(EditText)findViewById(R.id.txt_destino);
         llegada=(TextView) findViewById(R.id.txt_llegada);
@@ -61,18 +64,19 @@ public class InicioActivity extends AppCompatActivity implements DatePickerDialo
         Adultos=(TextView)findViewById(R.id.txt_adultos);
         ninos=(TextView)findViewById(R.id.txt_ninos);
 
-       // ObtenerDatosLogin();
         add_rem();
-        iniciar_secion();
+        ObtenerDatosLogin();
         mostrarTarifas();
     }
 
     public void calendario1(View view){
+        pssicion=1;
         calendario=(TextView)findViewById(R.id.txt_llegada);
         datePicker(view);
     }
 
     public void calendario2(View view){
+        pssicion=2;
         calendario=(TextView)findViewById(R.id.txt_salida);
         datePicker(view);
     }
@@ -80,11 +84,26 @@ public class InicioActivity extends AppCompatActivity implements DatePickerDialo
     public void datePicker(View view){
         DatePickerFragment fragment = new  DatePickerFragment();
         fragment.show(getSupportFragmentManager(),"Date");
+        //Dialog p = fragment.getDialog();
+
+        llegada.setError(null);
+        salida.setError(null);
     }
 
     public void setDate(final Calendar calender){
         final DateFormat dateform= DateFormat.getDateInstance(DateFormat.MEDIUM);
         calendario.setText(dateform.format(calender.getTime()));
+        //final DateFormat dateforma= DateFormat.getDateInstance(DateFormat.SHORT);
+        SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+        String s = format.format(calender.getTime());
+
+        if(pssicion==1){
+            AppState.llegada=s;
+        }else if (pssicion==2){
+            AppState.salida=s;
+        }
+        Log.e(TAG,"dataView:"+s);
+
     }
     public void add_rem(){
         ImageView menos_A=(ImageView)findViewById(R.id.ha_rem);
@@ -109,6 +128,7 @@ public class InicioActivity extends AppCompatActivity implements DatePickerDialo
         mas_A.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                cuartos.setError(null);
                 int x =Integer.parseInt(((EditText)findViewById(R.id.txt_habitacion)).getText().toString());
                 if(x>=0 && x<=10){
                     x++;
@@ -165,87 +185,133 @@ public class InicioActivity extends AppCompatActivity implements DatePickerDialo
         });
     }
 
-    public String mes(String cadena){
-        String []arre;
-        arre=cadena.split(" ");
-        String mes= arre[1].replace(".","");
-        String nuevomes="";
-        if(mes=="ene"){
-            nuevomes="01";
-        }else if(mes=="feb"){
-            nuevomes="02";
-        }else if(mes=="feb"){
-            nuevomes="02";
-        }else if(mes=="mar"){
-            nuevomes="03";
-        }else if(mes=="abr"){
-            nuevomes="04";
-        }else if(mes=="may"){
-            nuevomes="05";
-        }else if(mes=="jun"){
-            nuevomes="06";
-        }else if(mes=="jul"){
-            nuevomes="07";
-        }else if(mes=="ago"){
-            nuevomes="08";
-        }else if(mes=="sept"){
-            nuevomes="09";
-        }else if(mes=="oct"){
-            nuevomes="10";
-        }else if(mes=="nov"){
-            nuevomes="11";
-        }else if(mes=="dic"){
-            nuevomes="12";
+
+    public String iatas(String ciudad){
+        String iata="";
+
+        String cmp=ciudad.toLowerCase();
+
+        Log.e(TAG, "iata minuscula: "+cmp);
+
+        if(cmp.equals("mazatlan")){
+            iata="MZT";
+        }else if(cmp.equals("la habana")){
+            iata="HAV";
+        }else if(cmp.equals("cancun")){
+            iata="CUN";
+        }else if(cmp.equals("merida")){
+            iata="MID";
+        }else if(cmp.equals("veracruz")){
+            iata="VER";
+        }else if(cmp.equals("la paz")){
+            iata="LAP";
+        }else{
+            iata="NOSE";
         }
 
-        String fecha=arre[2]+nuevomes+arre[0];
-        return fecha;
+        return iata;
     }
 
     public void mostrarTarifas(){
 
-
         tarifas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String llega,sal;
-                llega=mes(llegada.getText().toString());
-                sal=mes(salida.getText().toString());
-                String fechas=llegada.getText().toString()+"-"+salida.getText().toString();
-                String personas=Adultos.getText().toString()+" Adultos "+ninos.getText().toString()+" Niños";
-                if(AppState.accessToken=="")
-                {
-                    Toast.makeText(getApplicationContext(), "Inicie su secion", Toast.LENGTH_SHORT).show();
-                }else{
-                    Intent nextViewIndex = new Intent(InicioActivity.this,IndexActivity.class);
-                    Bundle datos = new Bundle();
-                    datos.putString("destino",destino.getText().toString());
-                    datos.putString("llegada",llega);
-                    datos.putString("salida",sal);
-                    datos.putString("cuartos",cuartos.getText().toString());
-                    datos.putString("adultos",Adultos.getText().toString());
-                    datos.putString("ninos",ninos.getText().toString());
-                    datos.putString("fechas",fechas);
-                    datos.putString("personas",personas);
-                    nextViewIndex.putExtras(datos);
-                    startActivity(nextViewIndex);
-                }
 
+                submitForm();
             }
         });
     }
 
-    public void iniciar_secion(){
-        secion.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+    public void Globales(){
 
-                ObtenerDatosLogin();
+        AppState.iata=iatas(destino.getText().toString());
+        AppState.destino=(destino.getText().toString());
+        AppState.cuarto=cuartos.getText().toString();
+        AppState.adultos=Adultos.getText().toString();
+        AppState.ninos=ninos.getText().toString();
+        AppState.fechas=llegada.getText().toString()+"-"+salida.getText().toString();
+        AppState.personas=Adultos.getText().toString()+" Adultos "+ninos.getText().toString()+" Niños";
 
-            }
-        });
+        if(AppState.accessToken=="")
+        {
+            Toast.makeText(getApplicationContext(), "Inicie su sesión", Toast.LENGTH_SHORT).show();
+            ObtenerDatosLogin();
+        }else{
+            //Globales();
+            Intent nextViewIndex = new Intent(InicioActivity.this,IndexActivity.class);
+            startActivity(nextViewIndex);
+        }
     }
 
+    private void  submitForm(){
+        dato=0;
+        if(!validestino()){
+            return;
+        }
+        if(!valiI()){
+            return;
+        }
+        if(!valiS()){
+            return;
+        }
+        if(!Cuartos()){
+            return;
+        }
+        dato=1;
+        Rec(dato);
+    }
+    private void Rec(int dato){
+        if(dato==1){
+            //tari();
+            Globales();
+        }
+    }
+
+    private  boolean Cuartos(){
+        String cuar=cuartos.getText().toString();
+        int C=Integer.parseInt(cuar);
+        if(C<=0){
+            cuartos.setError("Selecciona el numero de habitaciones");
+            return false;
+        }
+        return true;
+    }
+    private boolean valiI(){
+
+        String sali=llegada.getText().toString();
+        Log.e(TAG, "SALIDA: "+sali);
+        if(sali.isEmpty()){
+            llegada.setError("Llene este campoI");
+            return false;
+        }
+        return true;
+    }
+    private boolean valiS(){
+        String sali=salida.getText().toString();
+
+        if(sali.isEmpty()){
+            salida.setError("Llene este campoI");
+            return false;
+        }
+        return true;
+    }
+    private boolean validestino(){
+        String cuar=cuartos.getText().toString();
+        String adu=Adultos.getText().toString();
+        String ni=ninos.getText().toString();
+        String des=destino.getText().toString();
+        String sali=salida.getText().toString();
+        String ll=llegada.getText().toString();
+        int C=Integer.parseInt(cuar);
+        int A=Integer.parseInt(adu);
+        int N=Integer.parseInt(ni);
+        if(des.isEmpty()){
+            destino.setError("Llene este campo");
+            return false;
+        }
+        return true;
+    }
     private void ObtenerDatosLogin()
     {
         //Agregamos la base de la url y formateamos lo que obtenemos para convertirlo
@@ -274,7 +340,6 @@ public class InicioActivity extends AppCompatActivity implements DatePickerDialo
                     AppState.accessToken = response.body().getAccessToken();
 
 
-
                     Log.i(TAG,"Hoteles"+"access_token: "+access_token+"\n"+"token_type:"+token_type+"/n"+"expires_in:"+expires_in
                             +"\n"+"userName:"+userName+"\n"+"issued:"+issued+"\n"+"expires:"+expires);
                     Toast.makeText(getApplicationContext(), "Secion Iniciada", Toast.LENGTH_SHORT).show();
@@ -283,8 +348,6 @@ public class InicioActivity extends AppCompatActivity implements DatePickerDialo
                 {
                     Log.e(TAG, "onResponse: "+response.errorBody());
                 }
-
-
             }
 
             @Override

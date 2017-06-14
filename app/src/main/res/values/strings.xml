@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">HotelApp</string>
+    <string name="map_tyo_none">None</string>
+    <string name="map_type_nomrmal">Normal</string>
+    <string name="map_type_terrain">Terrain</string>
+    <string name="map_type_satellite">Satellite</string>
+    <string name="map_type_hybrid">Hybrid</string>
 </resources>

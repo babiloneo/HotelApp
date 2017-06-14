@@ -3,6 +3,22 @@
     package="itesloscabos.com.hotelapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <permission
+        android:name="itesloscabos.com.hotelapp.permission.MAPS_RESEIVE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="itesloscabos.com.hotelapp.permission.MAPS_RESEIVE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permissions.READ_GSERVICES" />
+
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -15,7 +31,6 @@
             android:name=".InicioActivity"
             android:label="Hotel"
             android:screenOrientation="portrait">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,7 +38,21 @@
             </intent-filter>
         </activity>
         <activity android:name=".IndexActivity" />
-        <activity android:name=".descripActivity"></activity>
+        <activity android:name=".descripActivity" />
+        <activity android:name=".MapIndexActivity" />
+
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyCp5wPKmEnUdGWX7M3ac33z4OFng6RZZ4M" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <activity android:name=".InfoHotelActivity" />
+        <activity android:name=".DatosReservacionActivity" />
+        <activity android:name=".InformacionPagoActivity" />
+        <activity android:name=".HabitacionActivity" />
+        <activity android:name=".ConfimacionActivity"></activity>
     </application>
 
 </manifest>
