@@ -26,6 +26,7 @@ import itesloscabos.com.hotelapp.IndexActivity;
 import itesloscabos.com.hotelapp.Models.AppState;
 import itesloscabos.com.hotelapp.Models.cuartos;
 import itesloscabos.com.hotelapp.Models.datosCuarto;
+import itesloscabos.com.hotelapp.Models.detallesCuartos;
 import itesloscabos.com.hotelapp.Models.disponibilidad;
 import itesloscabos.com.hotelapp.Models.hotelResult;
 import itesloscabos.com.hotelapp.Models.indexImagenes;
@@ -73,22 +74,56 @@ public class IndexAdapter extends ArrayAdapter<hotelResult>{
         direccion.setText(item.getAddress());
         estrellas.setRating(item.getCategory());
 
-
         float miprecio=item.getTotal();
         String elprecio;
-        if(miprecio>0){
-            elprecio=""+miprecio+" MXN";
-        }else
-        {
-            elprecio="No Disponible";
+        List<detallesCuartos> detalles=item.getDetalles();
+        String hab1,hab2;
+        float prec1,prec2;
+
+        if(detalles!=null){
+
+                float x=0,y=0,z=0;
+                for(int g=0;g<detalles.size();g++)
+                {
+
+                    detallesCuartos w=detalles.get(g);
+                    Log.e(TAG, "x': "+position +": "+w.getTotal());
+
+                    if(w.getName()!="No Disponible"){
+
+                        if(w.getName().equals("Habitación Sencilla") || w.getName().equals("Single Room") || w.getName().equals("Single Standard")){
+                            x=w.getTotal();
+                        }else if(w.getName().equals("Habitación Doble") || w.getName().equals("Double Room")){
+                            z=w.getTotal();
+                            //Log.e(TAG, "z': "+position +": "+w.getName()+" "+z);
+                        }
+                    }else
+                    {
+                        y=y+1;
+                    }
+
+                }
+                //x=1000 z=2000 y=3
+            //Log.e(TAG, "posicion': "+position +": "+x);
+            if(y>x && y>z){
+                    precio.setText("No Disponible");
+                }else if (x>0 && x>y && x<z && z>0){
+                    precio.setText(x+" MXN");
+                }else if(x>0 && x>y && x>z && z==0){
+                    precio.setText(x+" MXN");
+                }else if(z>x && x==0 && z>y){
+                    precio.setText(z+" MXN");
+                }else if (z<x && x>0 && x>y ){
+                    precio.setText(z+" MXN");
+            }
+
+        }else{
+            precio.setText("No Disponible");
         }
 
-        String precios;
-        precio.setText(elprecio);
         List<indexImagenes> indexImg=item.getImages();
         indexImagenes q=indexImg.get(1);
 
-        //"http://media-room5.trivago.com/wp-content/uploads/sites/3/2016/11/25114313/hoteles-todo-incluido-canarias-lanzarote-h10-timanfaya-palace-general-id4.jpg"
 
         Glide.with(context)
                 .load(q.getUrl())

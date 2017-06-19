@@ -8,6 +8,16 @@ public class datosCuarto {
 
     private String rateKey;
     private float total;
+    private float average;
+
+    public float getAverage() {
+        return average;
+    }
+
+    public void setAverage(float average) {
+        this.average = average;
+    }
+
     private Boolean available;
     private String code;
 

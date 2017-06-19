@@ -14,7 +14,7 @@ public class InformacionPagoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_informacion_pago);
 
-        confirmar = (Button)findViewById(R.id.Complete);
+       confirmar = (Button)findViewById(R.id.Complete);
         irFinal();
     }
 

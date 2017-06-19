@@ -3,6 +3,7 @@ package itesloscabos.com.hotelapp.Models;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Hotel {
 

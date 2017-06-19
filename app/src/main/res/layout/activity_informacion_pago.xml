@@ -8,7 +8,6 @@
     android:background="#F4F4F4"
     tools:context="itesloscabos.com.hotelapp.InformacionPagoActivity">
 
-
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -43,11 +42,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="50dp"
-                android:padding="10dp"
                 android:layout_gravity="start"
-                android:text="Informacion De Pago"
+                android:layout_marginStart="50dp"
                 android:gravity="center"
+                android:padding="10dp"
+                android:text="Informacion De Pago"
                 android:textColor="#fff"
                 android:textSize="20sp"
                 tools:ignore="MissingPrefix" />
@@ -58,497 +57,645 @@
     </android.support.design.widget.AppBarLayout>
 
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fillViewport="true">
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:weightSum="10">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight=".6"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="20dp"
+                android:weightSum="1">
 
                 <TextView
-                    android:id="@+id/textView10"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:layout_weight=".6"
-                    android:text="DATOS DE PAGO" />
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="DATOS DE PAGO"
+                    android:textStyle="bold" />
+
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="3.2"
-                android:background="#FFFFFF"
+                android:layout_height="wrap_content"
+                android:background="#FFF"
                 android:orientation="vertical"
-                android:weightSum="10">
+                android:paddingEnd="20dp"
+                android:paddingStart="20dp"
+                android:weightSum="6">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1.75"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/textlines"
                     android:orientation="horizontal"
-                    android:weightSum="6">
+                    android:weightSum="2">
 
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="4"
+                        android:layout_weight="1.7"
                         android:orientation="vertical"
-                        android:weightSum="4">
+                        android:weightSum="1">
 
                         <TextView
-                            android:id="@+id/textView53"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="NUMERO DE TARJETA" />
+                            android:layout_height="0dp"
+                            android:layout_weight="0.4"
+                            android:text="NUMERO DE TARJETA"
+                            android:textColor="#000"
+                            android:textSize="12dp" />
 
                         <EditText
-                            android:id="@+id/editText7"
+                            android:id="@+id/editText"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:layout_height="0dp"
+                            android:layout_weight="0.5"
+                            android:background="@android:color/white"
                             android:ems="10"
                             android:hint="Ingrese numero de la tarjeta"
-                            android:inputType="textPersonName" />
+                            android:inputType="textPersonName"
+                            android:lines="1"
+                            android:textSize="16sp" />
+
+                    </LinearLayout>
+
+
+                    <ImageButton
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="3dp"
+                        android:layout_weight="0.3"
+                        android:background="@android:color/transparent"
+                        android:src="@mipmap/master">
+
+                    </ImageButton>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/textlines"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:weightSum="1">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="0.4"
+                            android:text="NOMBRE IMPRESO EN LA TARJETA"
+                            android:textColor="#000"
+                            android:textSize="12sp" />
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="0.5"
+                            android:background="@android:color/white"
+                            android:ems="10"
+                            android:hint="ingrese el nombre igual que en la tarjeta"
+                            android:inputType="textPersonName"
+                            android:lines="1"
+                            android:textSize="16sp" />
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/textlines"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"
+                        android:orientation="vertical"
+                        android:weightSum="1">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="0.4"
+                            android:text="FECHA DE EXPIRACION"
+                            android:textColor="#000"
+                            android:textSize="12sp" />
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="0.5"
+                            android:background="@android:color/white"
+                            android:ems="10"
+                            android:hint="MM/AAAA"
+                            android:inputType="textPersonName"
+                            android:lines="1"
+                            android:textSize="16sp" />
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.35"
+                        android:orientation="vertical"
+                        android:weightSum="1">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="0.4"
+                            android:text="CCV"
+                            android:textColor="#000"
+                            android:textSize="12sp" />
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="0.5"
+                            android:background="@android:color/white"
+                            android:ems="10"
+                            android:hint="CCV"
+                            android:inputType="textPersonName"
+                            android:lines="1"
+                            android:textSize="16sp" />
+
 
                     </LinearLayout>
 
                     <ImageButton
-                        android:id="@+id/imageButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="2"
-                        app:srcCompat="@mipmap/master" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1.75"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:weightSum="4">
+                        android:layout_weight="0.15"
+                        android:background="@android:color/transparent"
+                        android:src="@drawable/ic_info">
 
-                        <TextView
-                            android:id="@+id/textView54"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="NOMBRE IMPRESO DE LA TARJETA" />
+                    </ImageButton>
 
-                        <EditText
-                            android:id="@+id/editText11"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:ems="10"
-                            android:hint="Ingrese el nombre igual que en la tarjeta"
-                            android:inputType="textPersonName" />
-
-                    </LinearLayout>
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1.75"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/textlines"
                     android:orientation="horizontal"
-                    android:weightSum="6">
+                    android:weightSum="1">
 
                     <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="2.5"
-                        android:orientation="vertical"
-                        android:weightSum="4">
-
-                        <TextView
-                            android:id="@+id/textView55"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="FECHA DE EXPIRACION" />
-
-                        <EditText
-                            android:id="@+id/editText12"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:ems="10"
-                            android:hint="MM/AAAA"
-                            android:inputType="textPersonName" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="2.5"
-                        android:orientation="vertical"
-                        android:weightSum="4">
-
-                        <TextView
-                            android:id="@+id/textView56"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="CCV" />
-
-                        <EditText
-                            android:id="@+id/editText13"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:ems="10"
-                            android:hint="CCV"
-                            android:inputType="textPersonName" />
-
-                    </LinearLayout>
-
-                    <ImageView
-                        android:id="@+id/imageView3"
-                        android:layout_width="110dp"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        app:srcCompat="@mipmap/info" />
+                        android:layout_weight="0.5"
+                        android:orientation="vertical"
+                        android:padding="5dp"
+                        android:weightSum="1">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_margin="2dp"
+                            android:layout_weight="0.4"
+                            android:text="Subtotal:"
+                            android:textAlignment="textEnd"
+                            android:textSize="18sp" />
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_margin="2dp"
+                            android:layout_weight="0.4"
+                            android:text="Tax:"
+                            android:textAlignment="textEnd"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:orientation="vertical"
+                        android:padding="5dp"
+                        android:weightSum="1">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_margin="2dp"
+                            android:layout_weight="0.4"
+                            android:text="$1,350.00"
+                            android:textAlignment="textEnd"
+                            android:textSize="18sp" />
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_margin="2dp"
+                            android:layout_weight="0.4"
+                            android:text="IVA incluido"
+                            android:textAlignment="textEnd"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
+
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="3"
                     android:orientation="horizontal"
-                    android:weightSum="6">
+                    android:weightSum="1">
 
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="3"
+                        android:layout_weight="0.5"
                         android:orientation="vertical"
-                        android:weightSum="4">
+                        android:padding="5dp"
+                        android:weightSum="1">
 
                         <TextView
-                            android:id="@+id/textView58"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="Subtotal: " />
+                            android:layout_height="0dp"
+                            android:layout_margin="2dp"
+                            android:layout_weight="0.9"
+                            android:text="Total:"
+                            android:textAlignment="textEnd"
+                            android:textColor="#000"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
 
-                        <TextView
-                            android:id="@+id/textView57"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="Tax: " />
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="3"
+                        android:layout_weight="0.5"
                         android:orientation="vertical"
-                        android:weightSum="4">
+                        android:padding="5dp"
+                        android:weightSum="1">
 
                         <TextView
-                            android:id="@+id/textView70"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="$1,350.00" />
+                            android:layout_height="0dp"
+                            android:layout_margin="2dp"
+                            android:layout_weight="0.7"
+                            android:text="$1,350.00"
+                            android:textAlignment="textEnd"
+                            android:textColor="#000"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
 
                         <TextView
-                            android:id="@+id/textView69"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="IVA Incluido" />
+                            android:layout_height="0dp"
+                            android:layout_weight="0.3"
+                            android:lines="1"
+                            android:text="Las tarifas Mostradas son en MXN"
+                            android:textSize="8sp" />
+
                     </LinearLayout>
+
+
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1.75"
-                    android:orientation="vertical">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal"
-                        android:weightSum="2">
-
-                        <TextView
-                            android:id="@+id/textView14"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="Total: " />
-
-                        <TextView
-                            android:id="@+id/textView11"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="$1,350.00" />
-                    </LinearLayout>
-
-                    <TextView
-                        android:id="@+id/textView16"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Las tarifas mostradas son en MXN" />
-
-                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight=".16"
-                android:orientation="horizontal"></LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight=".5"
-                android:background="#FFFFFF"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="#fff"
                 android:orientation="horizontal"
-                android:weightSum="3">
+                android:paddingEnd="20dp"
+                android:paddingLeft="20dp"
+                android:weightSum="1">
 
                 <Switch
                     android:id="@+id/switch1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:text="Acepto terminos y condiciones"
-                    android:textColor="#79D3D9" />
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:lines="1"
+                    android:text="Acepto Terminos y Condiciones"
+                    android:textColor="#79D3D9"
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
+
+
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight=".6"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:paddingBottom="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingTop="10dp"
                 android:weightSum="1">
 
                 <TextView
-                    android:id="@+id/textView60"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="Viajero" />
+                    android:text="VIAJERO"
+                    android:textStyle="bold" />
+
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="3.7"
-                android:background="#FFFFFF"
+                android:layout_height="match_parent"
+                android:background="#fff"
                 android:orientation="vertical"
-                android:weightSum="10">
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:weightSum="5">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1.66"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/textlines"
                     android:orientation="horizontal"
-                    android:weightSum="2">
+                    android:weightSum="1">
 
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
+                        android:layout_weight="0.5"
                         android:orientation="vertical"
-                        android:weightSum="4">
+                        android:weightSum="1">
 
                         <TextView
-                            android:id="@+id/textView63"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="NOMBRE" />
+                            android:layout_height="0dp"
+                            android:layout_weight="0.4"
+                            android:text="NOMBRE"
+                            android:textColor="#000"
+                            android:textSize="12sp" />
 
                         <EditText
-                            android:id="@+id/editText17"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:layout_height="0dp"
+                            android:layout_weight="0.5"
+                            android:background="@android:color/white"
                             android:ems="10"
-                            android:hint="Ingrese nombre"
-                            android:inputType="textPersonName" />
+                            android:hint="ingrese su nombre"
+                            android:inputType="textPersonName"
+                            android:lines="1"
+                            android:textSize="16sp" />
+
 
                     </LinearLayout>
 
+
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"
+                        android:orientation="vertical"
+                        android:weightSum="1">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="0.4"
+                            android:text="APELLIDOS"
+                            android:textColor="#000"
+                            android:textSize="12sp" />
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="0.5"
+                            android:background="@android:color/white"
+                            android:ems="10"
+                            android:hint="ingrese sus apellidos"
+                            android:inputType="textPersonName"
+                            android:lines="1"
+                            android:textSize="16sp" />
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/textlines"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:orientation="vertical"
-                        android:weightSum="4">
+                        android:weightSum="1">
 
                         <TextView
-                            android:id="@+id/textView64"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="APELLIDOS" />
+                            android:layout_height="0dp"
+                            android:layout_weight="0.4"
+                            android:text="EMAIL"
+                            android:textColor="#000"
+                            android:textSize="12sp" />
 
                         <EditText
-                            android:id="@+id/editText18"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:layout_height="0dp"
+                            android:layout_weight="0.5"
+                            android:background="@android:color/white"
                             android:ems="10"
-                            android:hint="Ingrese apellidos"
-                            android:inputType="textPersonName" />
+                            android:hint="ingrese su direccion de correo"
+                            android:inputType="textPersonName"
+                            android:lines="1"
+                            android:textSize="16sp" />
+
 
                     </LinearLayout>
+
+
+
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1.66"
-                    android:orientation="vertical"
-                    android:weightSum="4">
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/textlines"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
 
-                    <TextView
-                        android:id="@+id/textView65"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:text="E-MAIL" />
+                        android:orientation="vertical"
+                        android:weightSum="1">
 
-                    <EditText
-                        android:id="@+id/editText19"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="0.4"
+                            android:text="TELEFONO"
+                            android:textColor="#000"
+                            android:textSize="12sp" />
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="0.5"
+                            android:background="@android:color/white"
+                            android:ems="10"
+                            android:hint="Ingrese su numero telefonico"
+                            android:inputType="textPersonName"
+                            android:lines="1"
+                            android:textSize="16sp" />
+
+
+                    </LinearLayout>
+
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/textlines"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:ems="10"
-                        android:hint="Ingrese su direccion de correo"
-                        android:inputType="textPersonName" />
+                        android:orientation="vertical"
+                        android:weightSum="1">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="0.4"
+                            android:text="PAIS"
+                            android:textColor="#000"
+                            android:textSize="12sp" />
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="0.5"
+                            android:background="@android:color/white"
+                            android:ems="10"
+                            android:hint="Ingrese su Pais"
+                            android:inputType="textPersonName"
+                            android:lines="1"
+                            android:textSize="16sp" />
+
+                    </LinearLayout>
+
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1.66"
-                    android:orientation="vertical"
-                    android:weightSum="4">
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
 
-                    <TextView
-                        android:id="@+id/textView66"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:text="Teléfono" />
+                        android:orientation="vertical"
+                        android:weightSum="1">
 
-                    <EditText
-                        android:id="@+id/editText20"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:ems="10"
-                        android:hint="Ingrese su número de teléfono"
-                        android:inputType="textPersonName" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="0.4"
+                            android:text="PETICION ESPECIAL"
+                            android:textColor="#000"
+                            android:textSize="12sp" />
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="0.5"
+                            android:background="@android:color/white"
+                            android:ems="10"
+                            android:hint="ingrese si requiere una peticion especial"
+                            android:inputType="textPersonName"
+                            android:lines="1"
+                            android:textSize="16sp" />
+
+
+                    </LinearLayout>
+
+
+
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1.66"
-                    android:orientation="vertical"
-                    android:weightSum="4">
-
-                    <TextView
-                        android:id="@+id/textView67"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="TextView" />
-
-                    <EditText
-                        android:id="@+id/editText21"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:ems="10"
-                        android:inputType="textPersonName"
-                        android:text="Name" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="3.33"
-                    android:orientation="vertical"
-                    android:weightSum="4">
-
-                    <TextView
-                        android:id="@+id/textView68"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="País" />
-
-                    <EditText
-                        android:id="@+id/editText22"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:ems="10"
-                        android:inputType="textPersonName"
-                        android:text="México" />
-                </LinearLayout>
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight=".5"
-                android:orientation="horizontal">
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight=".66"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:weightSum="1">
 
                 <Button
                     android:id="@+id/Complete"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="#EEDC00"
-                    android:text="Completar reservacion"
-                    android:textColor="#A19500" />
+                    android:background="#DBDC1F"
+                    android:text="Completar Reservacion"
+                    android:textAllCaps="false"
+                    android:textSize="20sp" />
+
             </LinearLayout>
 
         </LinearLayout>
+
     </ScrollView>
+
 
 </LinearLayout>

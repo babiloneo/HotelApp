@@ -22,6 +22,15 @@ public class hotelResult {
     private List<indexImagenes> images;
     private float total;
     private float total2;
+    private List<detallesCuartos> detalles;
+
+    public List<detallesCuartos> getDetalles() {
+        return detalles;
+    }
+
+    public void setDetalles(List<detallesCuartos> detalles) {
+        this.detalles = detalles;
+    }
 
     public float getTotal2() {
         return total2;

@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import itesloscabos.com.hotelapp.HotelAPi.Service;
 import itesloscabos.com.hotelapp.Models.AppState;
@@ -22,6 +23,7 @@ import itesloscabos.com.hotelapp.Models.Hotel;
 import itesloscabos.com.hotelapp.Models.LoginRespuesta;
 import itesloscabos.com.hotelapp.Models.cuartos;
 import itesloscabos.com.hotelapp.Models.datosCuarto;
+import itesloscabos.com.hotelapp.Models.detallesCuartos;
 import itesloscabos.com.hotelapp.Models.disponibilidad;
 import itesloscabos.com.hotelapp.Models.hotelResult;
 import itesloscabos.com.hotelapp.Models.indexImagenes;
@@ -52,6 +54,10 @@ public class IndexActivity extends AppCompatActivity {
     String children;
     String fechas;
     String personas;
+
+    private List<detallesCuartos> nuevob;
+    //detallesCuartos detalles = new detallesCuartos();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,7 +97,7 @@ public class IndexActivity extends AppCompatActivity {
         clients.getInstance().getService().ObtenerListaHotel("Bearer " + AppState.accessToken,"TEST",AppState.iata,AppState.destino,AppState.llegada,AppState.salida,AppState.cuarto,AppState.adultos,AppState.ninos).enqueue(new Callback<Hotel>() {
             @Override
             public void onResponse(Call<Hotel> call, Response<Hotel> response) {
-                int h = response.body().getCount();
+                final int h = response.body().getCount();
                 String y = response.body().getProcessTime();
                 Boolean z = response.body().getCachedResponse();
                 Boolean a = response.body().getSuccess();
@@ -100,50 +106,66 @@ public class IndexActivity extends AppCompatActivity {
                     indexResult =response.body().getResult();
                     for(int x=0;x<indexResult.size();x++){
                         final hotelResult p=indexResult.get(x);
-                ////comienzo de la segunda peticion
+
+                //comienzo de la segunda peticion
+
                         clients.getInstance().getService().getDisponibilidad("Bearer " + AppState.accessToken,AppState.iata,p.getPropertyNumber(),AppState.llegada,AppState.salida,AppState.cuarto,AppState.adultos,AppState.ninos,AppState.iata).enqueue(new Callback<disponibilidad>() {
                             @Override
                             public void onResponse(Call<disponibilidad> call, Response<disponibilidad> response) {
-                                String processtime;
-                                Boolean success;
+
 
                                 if(response.isSuccessful()){
 
-                                    processtime=response.body().getProcessTime();
-                                    success=response.body().getSuccess();
                                     //obtengo mis resultados
                                     List<resdispo>disponibilidad=response.body().getResult();
                                     //obtengo el unico objeto que devuelve
-                                    resdispo ss=disponibilidad.get(0);
-                                    Log.i(TAG,"disponibilidad "+ss.getAvailable()+"  numero: "+ss.getPropertyNumber());
+                                    if(disponibilidad!=null && disponibilidad.size()>0) {
+                                        resdispo ss = disponibilidad.get(0);
+                                        Log.i(TAG, "disponibilidad " + ss.getAvailable() + "  numero: " + ss.getPropertyNumber());
+                                        int fff = 0;
+                                        nuevob = new ArrayList<detallesCuartos>(2);
+                                        detallesCuartos detalles;
+                                        //compruebo la disponibilidad
+                                        if (ss.getAvailable() == true) {
 
-                                    if(ss.getAvailable()==true){
-                                        //
-                                        List<cuartos> ListCusttos=ss.getRooms();
+                                            //obtengo los datos de los cuartos
+                                            List<cuartos> ListCusttos = ss.getRooms();
+                                            if (ListCusttos.size() > 0) {
+                                                for (int i = 0; i < ListCusttos.size(); i++) {
 
-                                        for(int i=0;i<ListCusttos.size();i++){
+                                                    cuartos m = ListCusttos.get(i);
+                                                    //obtengo los rates del cuarto
+                                                    List<datosCuarto> rooms = m.getRates();
+                                                    //pregunto si el rate es mayor a 0 en caso de que este vacio
+                                                    if (rooms.size() > 0) {
 
-                                            cuartos m =ListCusttos.get(i);
-                                            if(i==0){
+                                                        for (int gt = 0; gt < rooms.size(); gt++) {
+                                                            detalles = new detallesCuartos();
 
-                                                List<datosCuarto> rooms=m.getRates();
-                                                datosCuarto h=rooms.get(0);
-                                                p.setTotal(h.getTotal());
+                                                            //si no esta vacio obtengo los detalles del cuarto
+                                                            detalles.setName(m.getName());
+                                                            datosCuarto h = rooms.get(gt);
+                                                            detalles.setAverage(h.getAverage());
+                                                            detalles.setTotal(h.getTotal());
+                                                            detalles.setRateKey(h.getRateKey());
+                                                            detalles.setCode(h.getCode());
+                                                            Log.e(TAG, "muymal: " + m.getName() + h.getTotal());
+                                                            nuevob.add(detalles);
+                                                        }
 
-                                            }else
-                                                {
-                                                    List<datosCuarto> rooms=m.getRates();
-                                                    datosCuarto h=rooms.get(0);
-                                                    p.setTotal2(h.getTotal());
+                                                    } else {
+                                                        //detalles.name="No Disponible";
+                                                    }
+
                                                 }
+                                                p.setDetalles(nuevob);
+                                            } else {
+                                                // detalles.name="No Disponible";
+                                            }
 
-
-
+                                        } else {
+                                            // detalles.name="No Disponible";
                                         }
-
-                                    }else{
-                                        p.setTotal(0);
-                                        //precio.setText("No Disponible");
                                     }
                                 }else
                                 {
