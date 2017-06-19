@@ -95,12 +95,12 @@ public class HabitacionActivity extends AppCompatActivity {
 
         estandar =(TextView)findViewById(R.id.habi_estandar);
         europeo =(TextView)findViewById(R.id.habi_europeo);
-        Double est=getIntent().getExtras().getDouble("estandar");
-        Double eup=getIntent().getExtras().getDouble("europeo");
+        String est=getIntent().getExtras().getString("estandar");
+        String eup=getIntent().getExtras().getString("europeo");
         Log.e(TAG, "cuartos: "+est+" "+eup);
 
-        estandar.setText(""+est+" MXN");
-        europeo.setText(""+eup+" MXN");
+        estandar.setText(est);
+        europeo.setText(eup);
 
     }
 

@@ -185,7 +185,7 @@ de chocolate"
                     android:id="@+id/habi_estandar"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:text=" 836.36 MXN"
+                    android:text="No Disponible"
                     android:textColor="#000"
                     android:textSize="15sp"
                     android:layout_weight="1"/>
@@ -239,7 +239,7 @@ de chocolate"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:text=" 925.00 MXN"
+                    android:text="No Disponible"
                     android:textColor="#000"
                     android:textSize="15sp" />
 

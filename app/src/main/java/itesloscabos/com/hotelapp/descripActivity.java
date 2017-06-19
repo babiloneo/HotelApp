@@ -25,6 +25,7 @@ import itesloscabos.com.hotelapp.HotelAPi.Service;
 import itesloscabos.com.hotelapp.Models.AppState;
 import itesloscabos.com.hotelapp.Models.datos;
 import itesloscabos.com.hotelapp.Models.descripcion;
+import itesloscabos.com.hotelapp.Models.detallesCuartos;
 import itesloscabos.com.hotelapp.Models.hotelResult;
 import itesloscabos.com.hotelapp.Models.indexImagenes;
 import itesloscabos.com.hotelapp.adapters.viewPageAdapterNumberTwo;
@@ -53,6 +54,11 @@ public class descripActivity extends AppCompatActivity {
 
     Double est,eup;
 
+    private String propiedad;
+
+    private TextView estandar;
+    private TextView europeo;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,6 +75,11 @@ public class descripActivity extends AppCompatActivity {
         fecha.setText(AppState.fechas);
         personas.setText(AppState.personas);
 
+        propiedad = getIntent().getExtras().getString("propiedad");
+
+        estandar =(TextView)findViewById(R.id.desc_estandar);
+        europeo =(TextView)findViewById(R.id.desc_europeo);
+
         info=(Button)findViewById(R.id.desc_mapa);
         ventanaMapa();
 
@@ -84,14 +95,15 @@ public class descripActivity extends AppCompatActivity {
     }
 
     private void Habitacion() {
+
         ImageView habi=(ImageView)findViewById(R.id.desc_habitacion);
         habi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent go = new Intent(descripActivity.this,HabitacionActivity.class);
                 Bundle ane=new Bundle();
-                ane.putDouble("estandar",est);
-                ane.putDouble("europeo",eup);
+                ane.putString("estandar",estandar.getText().toString());
+                ane.putString("europeo",europeo.getText().toString());
                 go.putExtras(ane);
                 startActivity(go);
             }
@@ -99,12 +111,35 @@ public class descripActivity extends AppCompatActivity {
     }
 
     private void preciosCuartos() {
-         est=getIntent().getExtras().getDouble("estandar");
-         eup=getIntent().getExtras().getDouble("europeo");
-        TextView estandar =(TextView)findViewById(R.id.desc_estandar);
-        TextView europeo =(TextView)findViewById(R.id.desc_europeo);
-        estandar.setText(est+" MXN");
-        europeo.setText(eup+" MXN");
+
+        //obtengo mi datos del index de hoteles
+        List<hotelResult> index=AppState.index;
+
+        for(int x=0;x<index.size();x++){
+
+            hotelResult p=index.get(x);
+            //busco el hotel que nesesito mostrar su descripcion
+            if(p.getPropertyNumber().equals(propiedad)){
+
+                List<detallesCuartos> detalles =p.getDetalles();
+                //si lo encontre pregunto si su resultado no esta vacio o nulo
+                if(detalles!=null && detalles.size()>0){
+                //imprimo en pantalla los precios de las habitaciones
+                    for(int y=0;y<detalles.size();y++){
+                        detallesCuartos w =detalles.get(y);
+
+                        if(w.getName().equals("Habitación Sencilla") || w.getName().equals("Single Room") || w.getName().equals("Single Standard")){
+                            estandar.setText(w.getAverage()+" MXN");
+                        }
+                        else if(w.getName().equals("Habitación Doble") || w.getName().equals("Double Room")){
+                            //  z=w.getTotal();
+                            //Log.e(TAG, "z': "+position +": "+w.getName()+" "+z);
+                            europeo.setText(w.getAverage()+" MXN");
+                        }
+                    }
+                }
+            }
+        }
     }
 
     private void Reservacion() {
@@ -140,7 +175,6 @@ public class descripActivity extends AppCompatActivity {
     }
 
     public void descripcion(){
-        String propiedad = getIntent().getExtras().getString("propiedad");
 
         clients.getInstance().getService().getDescripciones("Bearer " +AppState.accessToken,AppState.iata,propiedad)
                 .enqueue(new Callback<descripcion>() {

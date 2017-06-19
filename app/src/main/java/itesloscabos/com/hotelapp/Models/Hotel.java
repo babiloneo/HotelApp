@@ -1,6 +1,9 @@
 package itesloscabos.com.hotelapp.Models;
 
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -11,6 +14,16 @@ public class Hotel {
     private String processTime;
     private Boolean cachedResponse;
     private Boolean success;
+    private CurrencyInfo currencyInfo;
+
+    public CurrencyInfo getCurrencyInfo() {
+        return currencyInfo;
+    }
+
+    public void setCurrencyInfo(CurrencyInfo currencyInfo) {
+        this.currencyInfo = currencyInfo;
+    }
+
     private List<hotelResult>result;
 
     public List<hotelResult> getResult() {

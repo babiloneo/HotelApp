@@ -15,6 +15,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -74,11 +75,8 @@ public class IndexAdapter extends ArrayAdapter<hotelResult>{
         direccion.setText(item.getAddress());
         estrellas.setRating(item.getCategory());
 
-        float miprecio=item.getTotal();
-        String elprecio;
         List<detallesCuartos> detalles=item.getDetalles();
-        String hab1,hab2;
-        float prec1,prec2;
+
 
         if(detalles!=null){
 
@@ -92,9 +90,9 @@ public class IndexAdapter extends ArrayAdapter<hotelResult>{
                     if(w.getName()!="No Disponible"){
 
                         if(w.getName().equals("Habitación Sencilla") || w.getName().equals("Single Room") || w.getName().equals("Single Standard")){
-                            x=w.getTotal();
+                            x=w.getAverage();
                         }else if(w.getName().equals("Habitación Doble") || w.getName().equals("Double Room")){
-                            z=w.getTotal();
+                            z=w.getAverage();
                             //Log.e(TAG, "z': "+position +": "+w.getName()+" "+z);
                         }
                     }else
@@ -104,7 +102,7 @@ public class IndexAdapter extends ArrayAdapter<hotelResult>{
 
                 }
                 //x=1000 z=2000 y=3
-            //Log.e(TAG, "posicion': "+position +": "+x);
+            //Validacion para mostrar el precion mas barato siempre en la lista de hoteles (ListView)
             if(y>x && y>z){
                     precio.setText("No Disponible");
                 }else if (x>0 && x>y && x<z && z>0){
@@ -135,15 +133,16 @@ public class IndexAdapter extends ArrayAdapter<hotelResult>{
         descripcion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent ViewDescripcion=new Intent(context,descripActivity.class);
-                Bundle hotel=new Bundle();
-                hotel.putString("propiedad",item.getPropertyNumber());
-                hotel.putDouble("estandar",item.getTotal());
-                hotel.putDouble("europeo",item.getTotal2());
-                ViewDescripcion.putExtras(hotel);
-                ViewDescripcion.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-                context.startActivity(ViewDescripcion);
+                if (precio.getText().equals("No Disponible")){
+                    Toast.makeText(context.getApplicationContext(), "No Disponible", Toast.LENGTH_SHORT).show();
+                }else{
+                    Intent ViewDescripcion=new Intent(context,descripActivity.class);
+                    Bundle hotel=new Bundle();
+                    hotel.putString("propiedad",item.getPropertyNumber());
+                    ViewDescripcion.putExtras(hotel);
+                    ViewDescripcion.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(ViewDescripcion);
+                }
             }
         });
 

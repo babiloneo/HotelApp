@@ -22,6 +22,6 @@ public class AppState {
 
     public static List<datos> result;
 
-    public static List<hotelResult> precios;
+    public static List<hotelResult> index;
 
 }

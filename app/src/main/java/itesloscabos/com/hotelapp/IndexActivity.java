@@ -1,70 +1,56 @@
 package itesloscabos.com.hotelapp;
 
 import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.RatingBar;
+import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
-import itesloscabos.com.hotelapp.HotelAPi.Service;
 import itesloscabos.com.hotelapp.Models.AppState;
+import itesloscabos.com.hotelapp.Models.CurrencyInfo;
 import itesloscabos.com.hotelapp.Models.Hotel;
-import itesloscabos.com.hotelapp.Models.LoginRespuesta;
 import itesloscabos.com.hotelapp.Models.cuartos;
 import itesloscabos.com.hotelapp.Models.datosCuarto;
 import itesloscabos.com.hotelapp.Models.detallesCuartos;
 import itesloscabos.com.hotelapp.Models.disponibilidad;
 import itesloscabos.com.hotelapp.Models.hotelResult;
-import itesloscabos.com.hotelapp.Models.indexImagenes;
 import itesloscabos.com.hotelapp.Models.resdispo;
 import itesloscabos.com.hotelapp.adapters.IndexAdapter;
 import itesloscabos.com.hotelapp.cliente.clients;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class IndexActivity extends AppCompatActivity {
-    Retrofit retrofit;
+
     private static final String TAG = "PRUEBA";
 
     List<hotelResult> indexResult;
-    List<hotelResult>indexAux;
     IndexAdapter adapter;
     ListView listaHoteles;
 
     Button map;
-    String refPoint ;
-    String checkIn ;
-    String checkOut ;
-    String rooms ;
-    String adults;
-    String children;
-    String fechas;
-    String personas;
 
     private List<detallesCuartos> nuevob;
     //detallesCuartos detalles = new detallesCuartos();
-
+    ProgressBar procesoCircular;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_index);
         //obtengolos datos de mi ventana inicio
 
-
+        procesoCircular=(ProgressBar)findViewById(R.id.ProgressBarCircular);
+        progresoProceso();
         listaHoteles=(ListView)findViewById(R.id.lista_hoteles);
         //inicio mi lista de hoteles en mi listview
         obtenerDatosIndex();
@@ -80,6 +66,10 @@ public class IndexActivity extends AppCompatActivity {
          map=(Button)findViewById(R.id.mapa);
 
          irMapa();
+    }
+
+    private void progresoProceso() {
+        new Async_Task().execute();
     }
 
 
@@ -101,10 +91,15 @@ public class IndexActivity extends AppCompatActivity {
                 String y = response.body().getProcessTime();
                 Boolean z = response.body().getCachedResponse();
                 Boolean a = response.body().getSuccess();
+                CurrencyInfo valor=response.body().getCurrencyInfo();
+                final float euros=valor.getExchangeRate();
 
                 if(response.isSuccessful()){
+
                     indexResult =response.body().getResult();
+
                     for(int x=0;x<indexResult.size();x++){
+
                         final hotelResult p=indexResult.get(x);
 
                 //comienzo de la segunda peticion
@@ -145,26 +140,17 @@ public class IndexActivity extends AppCompatActivity {
                                                             //si no esta vacio obtengo los detalles del cuarto
                                                             detalles.setName(m.getName());
                                                             datosCuarto h = rooms.get(gt);
-                                                            detalles.setAverage(h.getAverage());
-                                                            detalles.setTotal(h.getTotal());
+                                                            detalles.setAverage(euros*h.getAverage());
+                                                            detalles.setTotal(euros*h.getTotal());
                                                             detalles.setRateKey(h.getRateKey());
                                                             detalles.setCode(h.getCode());
                                                             Log.e(TAG, "muymal: " + m.getName() + h.getTotal());
                                                             nuevob.add(detalles);
                                                         }
-
-                                                    } else {
-                                                        //detalles.name="No Disponible";
                                                     }
-
                                                 }
                                                 p.setDetalles(nuevob);
-                                            } else {
-                                                // detalles.name="No Disponible";
                                             }
-
-                                        } else {
-                                            // detalles.name="No Disponible";
                                         }
                                     }
                                 }else
@@ -183,7 +169,6 @@ public class IndexActivity extends AppCompatActivity {
                                             p.setTotal(0);
                                             break;
                                     }
-
                                 }
                             }
 
@@ -196,14 +181,15 @@ public class IndexActivity extends AppCompatActivity {
                         //fin del segundo peticion
 
                     }
-                    AppState.precios=indexResult;
-                    indexResult =response.body().getResult();
-                    adapter=new IndexAdapter(getApplicationContext(),R.layout.listview_index,indexResult);
-                    listaHoteles.setAdapter(adapter);
 
                 }else{
                     Log.e(TAG, "onResponse: "+response.errorBody());
                 }
+
+                AppState.index=indexResult;
+                indexResult =response.body().getResult();
+                adapter=new IndexAdapter(getApplicationContext(),R.layout.listview_index,indexResult);
+                listaHoteles.setAdapter(adapter);
             }
 
             @Override
@@ -222,5 +208,38 @@ public class IndexActivity extends AppCompatActivity {
                 startActivity(mapita);
             }
         });
+    }
+
+    public class Async_Task extends AsyncTask<Void,Integer,Void>{
+
+        int progreso;
+
+        @Override
+        protected void onPreExecute() {
+            progreso=0;
+            procesoCircular.setVisibility(View.VISIBLE);
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            while(progreso<100){
+                progreso++;
+                publishProgress(progreso);
+                SystemClock.sleep(30);
+            }
+            return null;
+        }
+
+        @Override
+        protected void onProgressUpdate(Integer... values) {
+            procesoCircular.setProgress(values[0]);
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            //Toast.makeText(IndexActivity.this,"",Toast.LENGTH_SHORT).show();
+            procesoCircular.setVisibility(View.INVISIBLE);
+            listaHoteles.setVisibility(View.VISIBLE);
+        }
     }
 }
