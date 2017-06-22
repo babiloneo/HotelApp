@@ -35,6 +35,7 @@
                         android:layout_width="0dp"
                         android:layout_height="20dp"
                         android:layout_weight="0.5"
+                        android:background="@drawable/efectoflechas"
                         android:src="@drawable/ic_chevron_left_black" />
 
                 <TextView
@@ -222,6 +223,7 @@
                 android:layout_width="0dp"
                 android:layout_height="30dp"
                 android:layout_weight="1.5"
+                android:background="@drawable/efectoboton"
                 android:text="515Km"
                 android:textSize="10sp" />
 
@@ -258,6 +260,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.2"
+                android:background="@drawable/efectoflechaotro"
                 android:src="@drawable/ic_chevron_right_black_24dp" />
 
         </LinearLayout>
