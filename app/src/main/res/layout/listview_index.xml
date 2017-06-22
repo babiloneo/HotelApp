@@ -81,7 +81,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:layout_weight="0.1"
-            android:background="@android:color/transparent"
+            android:background="@drawable/efectolist"
             android:gravity="center"
             android:src="@drawable/ic_chevron_right_black_24dp" />
 

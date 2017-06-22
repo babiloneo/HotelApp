@@ -183,7 +183,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.3"
-                            android:background="@android:color/transparent"
+                            android:background="@drawable/efectopicdate"
                             android:onClick="calendario1"
                             android:src="@drawable/ic_date_range_black_24dp" />
 
@@ -213,7 +213,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.3"
-                            android:background="@android:color/transparent"
+                            android:background="@drawable/efectopicdate"
                             android:onClick="calendario2"
                             android:src="@drawable/ic_date_range_black_24dp" />
 
@@ -270,7 +270,7 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="0.33"
-                            android:background="#DBDC1F"
+                            android:background="@drawable/efectoboton"
                             android:src="@drawable/ic_remove_black" />
 
                         <EditText
@@ -289,7 +289,7 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="0.33"
-                            android:background="#DBDC1F"
+                            android:background="@drawable/efectoboton"
                             android:src="@drawable/ic_add_black_24dp"
                             android:text="+" />
 
@@ -329,7 +329,7 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="0.33"
-                            android:background="#DBDC1F"
+                            android:background="@drawable/efectoboton"
                             android:src="@drawable/ic_remove_black" />
 
                         <EditText
@@ -347,7 +347,7 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="0.33"
-                            android:background="#DBDC1F"
+                            android:background="@drawable/efectoboton"
                             android:src="@drawable/ic_add_black_24dp" />
                     </LinearLayout>
 
@@ -381,7 +381,7 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="0.33"
-                            android:background="#DBDC1F"
+                            android:background="@drawable/efectoboton"
                             android:src="@drawable/ic_remove_black" />
 
                         <EditText
@@ -399,7 +399,7 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="0.33"
-                            android:background="#DBDC1F"
+                            android:background="@drawable/efectoboton"
                             android:src="@drawable/ic_add_black_24dp" />
                     </LinearLayout>
 
@@ -420,7 +420,7 @@
                     android:id="@+id/ver_tarifas"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#DBDC1F"
+                    android:background="@drawable/efectoboton"
                     android:text="Ver Tarifas" />
 
             </LinearLayout>

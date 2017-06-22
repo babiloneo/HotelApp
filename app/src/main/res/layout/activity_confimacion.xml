@@ -35,7 +35,8 @@
                     android:layout_width="0dp"
                     android:layout_height="20dp"
                     android:layout_weight="0.5"
-                    android:onClick=""
+                    android:background="@drawable/efectoflechas"
+
                     android:src="@drawable/ic_chevron_left_black" />
 
                 <TextView

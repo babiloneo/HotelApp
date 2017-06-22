@@ -34,7 +34,7 @@
                     android:layout_width="0dp"
                     android:layout_height="20dp"
                     android:layout_weight="0.5"
-                    android:onClick=""
+                    android:background="@drawable/efectoflechas"
                     android:src="@drawable/ic_chevron_left_black" />
 
 
@@ -56,8 +56,7 @@
 
     <ScrollView
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        >
+        android:layout_height="fill_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -414,7 +413,7 @@
                     android:text="Acepto Terminos y Condiciones"
                     android:textColor="#79D3D9"
                     android:textSize="18sp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
 
             </LinearLayout>
@@ -462,8 +461,8 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:layout_weight="0.4"
                             android:layout_marginTop="15dp"
+                            android:layout_weight="0.4"
                             android:text="NOMBRE"
                             android:textColor="#000"
                             android:textSize="12sp" />
@@ -493,8 +492,8 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:layout_weight="0.4"
                             android:layout_marginTop="15dp"
+                            android:layout_weight="0.4"
                             android:text="APELLIDOS"
                             android:textColor="#000"
                             android:textSize="12sp" />
@@ -534,8 +533,8 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:layout_weight="0.4"
                             android:layout_marginTop="15dp"
+                            android:layout_weight="0.4"
                             android:text="EMAIL"
                             android:textColor="#000"
                             android:textSize="12sp" />
@@ -555,7 +554,6 @@
                     </LinearLayout>
 
 
-
                 </LinearLayout>
 
                 <LinearLayout
@@ -576,8 +574,8 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:layout_weight="0.4"
                             android:layout_marginTop="15dp"
+                            android:layout_weight="0.4"
                             android:text="TELEFONO"
                             android:textColor="#000"
                             android:textSize="12sp" />
@@ -597,7 +595,6 @@
                     </LinearLayout>
 
 
-
                 </LinearLayout>
 
 
@@ -619,8 +616,8 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:layout_weight="0.4"
                             android:layout_marginTop="15dp"
+                            android:layout_weight="0.4"
                             android:text="PAIS"
                             android:textColor="#000"
                             android:textSize="12sp" />
@@ -657,8 +654,8 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:layout_weight="0.4"
                             android:layout_marginTop="15dp"
+                            android:layout_weight="0.4"
                             android:text="PETICION ESPECIAL"
                             android:textColor="#000"
                             android:textSize="12sp" />
@@ -678,20 +675,19 @@
                     </LinearLayout>
 
 
-
                 </LinearLayout>
 
 
             </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="10dp"
-            android:weightSum="1">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                android:weightSum="1">
 
-        </LinearLayout>
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -704,7 +700,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="#DBDC1F"
+                    android:background="@drawable/efectoboton"
                     android:text="Completar Reservacion"
                     android:textAllCaps="false"
                     android:textSize="20sp" />

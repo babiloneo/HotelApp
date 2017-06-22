@@ -91,8 +91,7 @@ public class descripActivity extends AppCompatActivity {
         Regre.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent nextViewIndex = new Intent(descripActivity.this,IndexActivity.class);
-                startActivity(nextViewIndex);
+                onBackPressed();
             }
         });
 
