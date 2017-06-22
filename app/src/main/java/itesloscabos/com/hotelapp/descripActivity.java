@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -58,6 +59,9 @@ public class descripActivity extends AppCompatActivity {
 
     private TextView estandar;
     private TextView europeo;
+
+    private  String habitacionEstadar,PrecioEstandar,habitacionEuropeo,PrecioEuropeo,transactionId,rateKeyEstandar,rateKeyEuropeo;
+    private float taxRate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -130,11 +134,19 @@ public class descripActivity extends AppCompatActivity {
 
                         if(w.getName().equals("Habitación Sencilla") || w.getName().equals("Single Room") || w.getName().equals("Single Standard")){
                             estandar.setText(w.getAverage()+" MXN");
+                            habitacionEstadar=w.getName();
+                            PrecioEstandar=""+w.getTotal();
+                            transactionId=w.getTransactionId();
+                            taxRate=w.getTaxRate();
+                            rateKeyEstandar=w.getRateKey();
                         }
                         else if(w.getName().equals("Habitación Doble") || w.getName().equals("Double Room")){
-                            //  z=w.getTotal();
-                            //Log.e(TAG, "z': "+position +": "+w.getName()+" "+z);
                             europeo.setText(w.getAverage()+" MXN");
+                            habitacionEuropeo=w.getName();
+                            PrecioEuropeo=""+w.getTotal();
+                            transactionId=w.getTransactionId();
+                            taxRate=w.getTaxRate();
+                            rateKeyEuropeo=w.getRateKey();
                         }
                     }
                 }
@@ -143,22 +155,46 @@ public class descripActivity extends AppCompatActivity {
     }
 
     private void Reservacion() {
-        Button estandar=(Button)findViewById(R.id.estandar);
-        Button europeo=(Button)findViewById(R.id.eutopeo);
+        Button estandar2=(Button)findViewById(R.id.estandar);
+        Button europeo2=(Button)findViewById(R.id.eutopeo);
 
-        estandar.setOnClickListener(new View.OnClickListener() {
+        estandar2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent next=new Intent(descripActivity.this,DatosReservacionActivity.class);
-                startActivity(next);
+
+                if(estandar.getText().equals("No Disponible")) {
+                    Toast.makeText(getApplicationContext(), "No Disponible", Toast.LENGTH_SHORT).show();
+                }else{
+                    Intent next=new Intent(descripActivity.this,DatosReservacionActivity.class);
+                    Bundle datos=new Bundle();
+                    datos.putString("habitacion",habitacionEstadar);
+                    datos.putString("total",PrecioEstandar);
+                    datos.putString("id",transactionId);
+                    datos.putFloat("iva",taxRate);
+                    datos.putString("key",rateKeyEstandar);
+                    next.putExtras(datos);
+                    startActivity(next);
+                }
             }
         });
 
-        europeo.setOnClickListener(new View.OnClickListener() {
+        europeo2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent next=new Intent(descripActivity.this,DatosReservacionActivity.class);
-                startActivity(next);
+
+                if(europeo.getText().equals("No Disponible")) {
+                    Toast.makeText(getApplicationContext(), "No Disponible", Toast.LENGTH_SHORT).show();
+                }else{
+                    Intent next=new Intent(descripActivity.this,DatosReservacionActivity.class);
+                    Bundle datos =new Bundle();
+                    datos.putString("habitacion",habitacionEuropeo);
+                    datos.putString("total",PrecioEuropeo);
+                    datos.putString("id",transactionId);
+                    datos.putFloat("iva",taxRate);
+                    datos.putString("key",rateKeyEuropeo);
+                    next.putExtras(datos);
+                    startActivity(next);
+                }
             }
         });
     }

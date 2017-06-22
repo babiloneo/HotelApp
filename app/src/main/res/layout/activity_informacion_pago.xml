@@ -302,6 +302,7 @@
                         android:weightSum="1">
 
                         <TextView
+                            android:id="@+id/pag_subtotal"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_margin="2dp"
@@ -312,6 +313,7 @@
 
 
                         <TextView
+                            android:id="@+id/pag_iva"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_margin="2dp"
@@ -361,6 +363,7 @@
                         android:weightSum="1">
 
                         <TextView
+                            android:id="@+id/pag_total"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_margin="2dp"

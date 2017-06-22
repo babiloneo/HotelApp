@@ -18,6 +18,7 @@ import java.util.List;
 import itesloscabos.com.hotelapp.Models.AppState;
 import itesloscabos.com.hotelapp.Models.CurrencyInfo;
 import itesloscabos.com.hotelapp.Models.Hotel;
+import itesloscabos.com.hotelapp.Models.Provider;
 import itesloscabos.com.hotelapp.Models.cuartos;
 import itesloscabos.com.hotelapp.Models.datosCuarto;
 import itesloscabos.com.hotelapp.Models.detallesCuartos;
@@ -74,7 +75,7 @@ public class IndexActivity extends AppCompatActivity {
 
 
     private void obtenerDatosIndex(){
-        //IATAS: VER,HAV,MID
+
         /*
         * CUN=cancun
         * MID=Merida
@@ -84,6 +85,8 @@ public class IndexActivity extends AppCompatActivity {
         * MZT=Mazatlan
         * ACA=Acapulco
         * */
+
+
         clients.getInstance().getService().ObtenerListaHotel("Bearer " + AppState.accessToken,"TEST",AppState.iata,AppState.destino,AppState.llegada,AppState.salida,AppState.cuarto,AppState.adultos,AppState.ninos).enqueue(new Callback<Hotel>() {
             @Override
             public void onResponse(Call<Hotel> call, Response<Hotel> response) {
@@ -111,20 +114,35 @@ public class IndexActivity extends AppCompatActivity {
 
                                 if(response.isSuccessful()){
 
+                                    String transactionId="";
+                                    float taxRate;
+                                    nuevob = new ArrayList<detallesCuartos>(2);
+                                    detallesCuartos detalles;
+
+                                    List<Provider>provider=response.body().getProvider();
+
+                                    if(provider!=null){
+                                        for(int x=0;x<provider.size();x++){
+                                            Provider p =provider.get(x);
+                                            transactionId=p.getTransactionId();
+                                        }
+                                    }
+                                    Log.i(TAG, "provider"+transactionId);
                                     //obtengo mis resultados
                                     List<resdispo>disponibilidad=response.body().getResult();
                                     //obtengo el unico objeto que devuelve
                                     if(disponibilidad!=null && disponibilidad.size()>0) {
                                         resdispo ss = disponibilidad.get(0);
+
                                         Log.i(TAG, "disponibilidad " + ss.getAvailable() + "  numero: " + ss.getPropertyNumber());
                                         int fff = 0;
-                                        nuevob = new ArrayList<detallesCuartos>(2);
-                                        detallesCuartos detalles;
+
                                         //compruebo la disponibilidad
                                         if (ss.getAvailable() == true) {
 
                                             //obtengo los datos de los cuartos
                                             List<cuartos> ListCusttos = ss.getRooms();
+                                            taxRate=ss.getTaxRate();
                                             if (ListCusttos.size() > 0) {
                                                 for (int i = 0; i < ListCusttos.size(); i++) {
 
@@ -139,12 +157,13 @@ public class IndexActivity extends AppCompatActivity {
 
                                                             //si no esta vacio obtengo los detalles del cuarto
                                                             detalles.setName(m.getName());
+                                                            detalles.setTransactionId(transactionId);
+                                                            detalles.setTaxRate(taxRate);
                                                             datosCuarto h = rooms.get(gt);
                                                             detalles.setAverage(euros*h.getAverage());
                                                             detalles.setTotal(euros*h.getTotal());
                                                             detalles.setRateKey(h.getRateKey());
                                                             detalles.setCode(h.getCode());
-                                                            Log.e(TAG, "muymal: " + m.getName() + h.getTotal());
                                                             nuevob.add(detalles);
                                                         }
                                                     }
@@ -225,7 +244,7 @@ public class IndexActivity extends AppCompatActivity {
             while(progreso<100){
                 progreso++;
                 publishProgress(progreso);
-                SystemClock.sleep(30);
+                SystemClock.sleep(10);
             }
             return null;
         }

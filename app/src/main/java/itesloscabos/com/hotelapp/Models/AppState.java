@@ -8,6 +8,7 @@ import java.util.List;
 
 public class AppState {
 
+    public static String Environment="TEST";
     public static String iata="";
     public static String accessToken = "";
     public static String destino = "";
@@ -19,7 +20,7 @@ public class AppState {
 
     public static String fechas;
     public static String personas;
-
+    public static String propertyName;
     public static List<datos> result;
 
     public static List<hotelResult> index;

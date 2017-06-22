@@ -91,7 +91,7 @@ public class InicioActivity extends AppCompatActivity implements DatePickerDialo
     }
 
     public void setDate(final Calendar calender){
-        final DateFormat dateform= DateFormat.getDateInstance(DateFormat.MEDIUM);
+        SimpleDateFormat dateform = new SimpleDateFormat("dd/MM/yyyy");
         calendario.setText(dateform.format(calender.getTime()));
         //final DateFormat dateforma= DateFormat.getDateInstance(DateFormat.SHORT);
         SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");

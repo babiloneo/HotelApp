@@ -10,7 +10,16 @@ public class disponibilidad {
 
     private Boolean success ;
     private String processTime;
+    private List<Provider>provider;
     private List<resdispo> result;
+
+    public List<Provider> getProvider() {
+        return provider;
+    }
+
+    public void setProvider(List<Provider> provider) {
+        provider = provider;
+    }
 
     public List<resdispo> getResult() {
         return result;

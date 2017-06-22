@@ -14,6 +14,25 @@ public class detallesCuartos {
     public float precioP;
     public float totalp;
     public float exchangeRate;
+    public String transactionId;
+    private float taxRate;
+
+    public float getTaxRate() {
+        return taxRate;
+    }
+
+    public void setTaxRate(float taxRate) {
+        this.taxRate = taxRate;
+    }
+
+    public String getTransactionId() {
+        return transactionId;
+    }
+
+    public void setTransactionId(String transactionId) {
+        this.transactionId = transactionId;
+    }
+
     public String getName() {
         return name;
     }

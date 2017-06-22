@@ -133,9 +133,14 @@ public class IndexAdapter extends ArrayAdapter<hotelResult>{
         descripcion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (precio.getText().equals("No Disponible")){
-                    Toast.makeText(context.getApplicationContext(), "No Disponible", Toast.LENGTH_SHORT).show();
+
+                if (precio.getText().equals("No Disponible")) {
+
+                    Toast.makeText(context.getApplicationContext(),"No Disponible",Toast.LENGTH_SHORT).show();
+
                 }else{
+
+                    AppState.propertyName=item.getPropertyNumber();
                     Intent ViewDescripcion=new Intent(context,descripActivity.class);
                     Bundle hotel=new Bundle();
                     hotel.putString("propiedad",item.getPropertyNumber());

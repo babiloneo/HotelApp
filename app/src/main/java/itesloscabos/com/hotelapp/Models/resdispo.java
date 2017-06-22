@@ -10,6 +10,15 @@ public class resdispo {
 
     private Boolean available;
     private String propertyNumber;
+    private float taxRate;
+
+    public float getTaxRate() {
+        return taxRate;
+    }
+
+    public void setTaxRate(float taxRate) {
+        this.taxRate = taxRate;
+    }
 
     public String getPropertyNumber() {
         return propertyNumber;
