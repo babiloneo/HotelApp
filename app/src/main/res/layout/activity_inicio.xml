@@ -37,7 +37,7 @@
                     android:textAlignment="viewStart"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:text="Hoteles" />
+                    android:text="Hotel" />
 
                 <ImageButton
                     android:id="@+id/imageButton2"

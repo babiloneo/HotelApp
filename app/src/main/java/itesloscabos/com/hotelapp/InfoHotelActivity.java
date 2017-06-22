@@ -46,7 +46,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class InfoHotelActivity extends AppCompatActivity implements OnMapReadyCallback {
-
+    //respaldo
     ViewPager viewPager;
     viewPagerAdapter vpa;
     List<indexImagenes>imgs;
@@ -66,7 +66,6 @@ public class InfoHotelActivity extends AppCompatActivity implements OnMapReadyCa
             setContentView(R.layout.activity_info_hotel);
             InitMap();
         }
-
         sliderDotaPanel=(LinearLayout)findViewById(R.id.SliderDota);
 
         List<datos>datosHotel=AppState.result;
@@ -143,6 +142,7 @@ public class InfoHotelActivity extends AppCompatActivity implements OnMapReadyCa
 
             }
         });
+        //GeoLocate();
 
     }
 
@@ -163,36 +163,14 @@ public class InfoHotelActivity extends AppCompatActivity implements OnMapReadyCa
             Toast.makeText(this, "no se conecto", Toast.LENGTH_SHORT).show();
         }
         return false;
+
+
     }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mGoogleMap = googleMap;
-        if(mGoogleMap!=null){
-            mGoogleMap.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter(){
-
-                @Override
-                public View getInfoWindow(Marker marker) {
-                    return null;
-                }
-
-                @Override
-                public View getInfoContents(Marker marker) {
-                    View v =getLayoutInflater().inflate(R.layout.info_window,null);
-                    ImageView imagen =(ImageView)v.findViewById(R.id.inf_imagen);
-                    TextView nombre=(TextView)v.findViewById(R.id.inf_nombre);
-                    TextView precio=(TextView)v.findViewById(R.id.inf_precio);
-                    TextView direccion=(TextView)v.findViewById(R.id.inf_direccion);
-
-                    LatLng ll = marker.getPosition();
-                    nombre.setText(marker.getTitle());
-                    precio.setText("120MXN");
-                    direccion.setText(marker.getSnippet());
-
-                    return v;
-                }
-            });
-        }
+        //goToLocationZoom(39.008224,-76.8984527,2);
     }
 
     private void goToLocationZoom(double latitud, double longitud,float zoom) {
@@ -204,40 +182,32 @@ public class InfoHotelActivity extends AppCompatActivity implements OnMapReadyCa
 
     public void GeoLocate() {
 
-        try {
-
-            String buscar = AppState.destino;
-            Log.e(TAG, "buscar"+" "+buscar);
-
-            Geocoder gc = new Geocoder(this);
-
-            List<Address> list  = gc.getFromLocationName(buscar, 1);
-            Address address = list.get(0);
-
-            double lat = address.getLatitude();
-            double log = address.getLongitude();
-            goToLocationZoom(lat, log, 6);
-            Log.e(TAG, "primero: "+lat+" "+log);
-
-
-            List<datos>datosHotel=AppState.result;
-                datos p = datosHotel.get(0);
+        List<datos>datosHotel=AppState.result;
+        if(datosHotel!=null){
+            for(int x=0;x<datosHotel.size();x++){
+                datos p = datosHotel.get(x);
 
                 double latitud = p.getLatitude();
                 double longitud = p.getLongitude();
 
                 Log.e(TAG, "segundo: "+latitud+" "+longitud);
+                if(latitud!=0 && longitud!=0){
+                    goToLocationZoom(latitud, longitud, 2);
 
+                    MarkerOptions marker = new MarkerOptions()
+                            .title(p.getName())
+                            .position(new LatLng(latitud, longitud));
+                    mGoogleMap.addMarker(marker);
+                }else{
+                    goToLocationZoom(39.008224,-76.8984527, 1);
+                }
 
-                MarkerOptions marker = new MarkerOptions()
-                        .title(p.getName())
-                        .position(new LatLng(latitud, longitud));
-                mGoogleMap.addMarker(marker);
-
-
-        } catch (IOException e) {
-            e.printStackTrace();
+            }
+        }else{
+            goToLocationZoom(39.008224,-76.8984527, 1);
         }
+
+
     }
 
     public class MyTimerClass extends TimerTask {

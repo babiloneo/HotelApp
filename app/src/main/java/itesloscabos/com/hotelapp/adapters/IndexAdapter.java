@@ -85,7 +85,6 @@ public class IndexAdapter extends ArrayAdapter<hotelResult>{
                 {
 
                     detallesCuartos w=detalles.get(g);
-                    Log.e(TAG, "x': "+position +": "+w.getTotal());
 
                     if(w.getName()!="No Disponible"){
 
