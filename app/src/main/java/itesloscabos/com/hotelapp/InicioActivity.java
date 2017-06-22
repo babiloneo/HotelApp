@@ -2,6 +2,7 @@ package itesloscabos.com.hotelapp;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -55,6 +56,7 @@ public class InicioActivity extends AppCompatActivity implements DatePickerDialo
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inicio);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         tarifas=(Button) findViewById(R.id.ver_tarifas);
         destino=(EditText)findViewById(R.id.txt_destino);
@@ -63,6 +65,8 @@ public class InicioActivity extends AppCompatActivity implements DatePickerDialo
         cuartos=(TextView)findViewById(R.id.txt_habitacion);
         Adultos=(TextView)findViewById(R.id.txt_adultos);
         ninos=(TextView)findViewById(R.id.txt_ninos);
+
+
 
         add_rem();
         ObtenerDatosLogin();

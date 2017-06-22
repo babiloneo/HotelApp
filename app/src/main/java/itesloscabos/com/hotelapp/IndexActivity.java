@@ -1,6 +1,7 @@
 package itesloscabos.com.hotelapp;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.AsyncTask;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -47,6 +49,7 @@ public class IndexActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_index);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         //obtengolos datos de mi ventana inicio
 
         procesoCircular=(ProgressBar)findViewById(R.id.ProgressBarCircular);
@@ -57,6 +60,15 @@ public class IndexActivity extends AppCompatActivity {
 
         TextView fechass=(TextView)findViewById(R.id.txt_fechas);
         TextView persona=(TextView)findViewById(R.id.textView10);
+
+        ImageView Regre=(ImageView)findViewById(R.id.REIndex);
+        Regre.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent nextViewIndex = new Intent(IndexActivity.this,InicioActivity.class);
+                startActivity(nextViewIndex);
+            }
+        });
 
         //Envia los titulos a la ventana index
 
@@ -94,7 +106,8 @@ public class IndexActivity extends AppCompatActivity {
                 CurrencyInfo valor=response.body().getCurrencyInfo();
                 final float euros=valor.getExchangeRate();
 
-                if(response.isSuccessful()){
+                if(response.isSuccessful())
+                {
 
                     indexResult =response.body().getResult();
 
@@ -109,7 +122,8 @@ public class IndexActivity extends AppCompatActivity {
                             public void onResponse(Call<disponibilidad> call, Response<disponibilidad> response) {
 
 
-                                if(response.isSuccessful()){
+                                if(response.isSuccessful())
+                                {
 
                                     //obtengo mis resultados
                                     List<resdispo>disponibilidad=response.body().getResult();
@@ -155,6 +169,7 @@ public class IndexActivity extends AppCompatActivity {
                                     }
                                 }else
                                 {
+                                    Log.e(TAG, "AAADDDFFFF ");
                                     switch(response.code()){
                                         case 404:
                                             Log.e(TAG, "Server Return Error: Not Faund "+response.errorBody());
@@ -184,17 +199,20 @@ public class IndexActivity extends AppCompatActivity {
 
                 }else{
                     Log.e(TAG, "onResponse: "+response.errorBody());
+
                 }
 
                 AppState.index=indexResult;
                 indexResult =response.body().getResult();
                 adapter=new IndexAdapter(getApplicationContext(),R.layout.listview_index,indexResult);
                 listaHoteles.setAdapter(adapter);
+
             }
 
             @Override
             public void onFailure(Call<Hotel> call, Throwable t) {
                 Log.e(TAG, "onFailure: "+t.getMessage());
+
             }
         });
     }

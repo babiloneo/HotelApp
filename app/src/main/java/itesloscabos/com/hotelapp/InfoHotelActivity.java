@@ -1,6 +1,7 @@
 package itesloscabos.com.hotelapp;
 
 import android.app.Dialog;
+import android.content.pm.ActivityInfo;
 import android.location.Address;
 import android.location.Geocoder;
 import android.support.v4.content.ContextCompat;
@@ -59,7 +60,7 @@ public class InfoHotelActivity extends AppCompatActivity implements OnMapReadyCa
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         if (googleServiceAvailable()) {
             setContentView(R.layout.activity_info_hotel);
@@ -76,6 +77,14 @@ public class InfoHotelActivity extends AppCompatActivity implements OnMapReadyCa
         TextView ciudad = (TextView)findViewById(R.id.inf_ciudad);
         RatingBar estrella =(RatingBar)findViewById(R.id.inf_estrellas);
         TextView descripcion=(TextView)findViewById(R.id.inf_descripcion);
+
+        ImageView Regre=(ImageView)findViewById(R.id.RGinfoHabi);
+        Regre.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         for (int x =0;x<datosHotel.size();x++){
             datos  p=datosHotel.get(x);

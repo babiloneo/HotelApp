@@ -30,6 +30,7 @@
                 android:paddingTop="16dp">
 
                 <ImageView
+                    android:id="@+id/RGMapa"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:src="@drawable/ic_chevron_left_black" />
