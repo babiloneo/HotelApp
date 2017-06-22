@@ -12,38 +12,34 @@
         android:layout_height="wrap_content"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
-            android:minHeight="?attr/actionBarSize"
-            tools:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            tools:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="4"
+            android:gravity="center">
 
+            <ImageView
+                android:id="@+id/RGinfoHabi"
+                android:layout_width="0dp"
+                android:layout_height="20dp"
+                android:layout_weight="0.5"
+                android:src="@drawable/ic_chevron_left_black" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:weightSum="1"
-                android:gravity="center"
-                >
+            <TextView
+                android:id="@+id/hot_titulo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3.5"
+                android:lines="1"
+                android:textColor="#FFF"
+                android:padding="10dp"
+                android:text="Informacion de la Habitacion"
+                android:textSize="20sp" />
 
-                <TextView
-                    android:padding="10dp"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.8"
-                    android:textSize="20sp"
-                    android:lines="1"
-                    android:background="@android:color/transparent"
-                    android:text="Infomacion de la Habitacion" />
+        </LinearLayout>
 
-            </LinearLayout>
-
-
-        </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>
 
@@ -70,7 +66,8 @@
                 android:id="@+id/viewPage"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                />
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true" />
 
             <LinearLayout
                 android:id="@+id/SliderDota"

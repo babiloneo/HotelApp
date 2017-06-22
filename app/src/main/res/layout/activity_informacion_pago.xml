@@ -22,35 +22,33 @@
             tools:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             tools:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingBottom="16dp"
-                android:paddingStart="16dp"
-                android:paddingTop="16dp">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:weightSum="4">
 
                 <ImageView
-                    android:layout_width="20dp"
+                    android:id="@+id/RGinfoPago"
+                    android:layout_width="0dp"
                     android:layout_height="20dp"
+                    android:layout_weight="0.5"
                     android:onClick=""
                     android:src="@drawable/ic_chevron_left_black" />
 
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3.5"
+                    android:padding="10dp"
+                    android:text="Informacion De Pago"
+                    android:textColor="#FFF"
+                    android:textSize="20sp"
+                    tools:ignore="MissingPrefix" />
+
             </LinearLayout>
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:layout_marginStart="50dp"
-                android:gravity="center"
-                android:padding="10dp"
-                android:text="Informacion De Pago"
-                android:textColor="#fff"
-                android:textSize="20sp"
-                tools:ignore="MissingPrefix" />
-
 
         </android.support.v7.widget.Toolbar>
 
@@ -84,7 +82,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="320dp"
                 android:background="#FFF"
                 android:orientation="vertical"
                 android:paddingEnd="20dp"
@@ -100,7 +98,8 @@
 
                     <LinearLayout
                         android:layout_width="0dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="15dp"
                         android:layout_weight="1.7"
                         android:orientation="vertical"
                         android:weightSum="1">
@@ -150,7 +149,8 @@
 
                     <LinearLayout
                         android:layout_width="0dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="15dp"
                         android:layout_weight="1"
                         android:orientation="vertical"
                         android:weightSum="1">
@@ -189,7 +189,8 @@
 
                     <LinearLayout
                         android:layout_width="0dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="15dp"
                         android:layout_weight="0.5"
                         android:orientation="vertical"
                         android:weightSum="1">
@@ -219,7 +220,8 @@
 
                     <LinearLayout
                         android:layout_width="0dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="15dp"
                         android:layout_weight="0.35"
                         android:orientation="vertical"
                         android:weightSum="1">
@@ -260,6 +262,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
                     android:background="@drawable/textlines"
                     android:orientation="horizontal"
                     android:weightSum="1">
@@ -380,7 +383,7 @@
                             android:layout_weight="0.3"
                             android:lines="1"
                             android:text="Las tarifas Mostradas son en MXN"
-                            android:textSize="8sp" />
+                            android:textSize="9sp" />
 
                     </LinearLayout>
 
@@ -420,10 +423,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingBottom="10dp"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
-                android:paddingTop="10dp"
+                android:padding="20dp"
                 android:weightSum="1">
 
                 <TextView
@@ -437,7 +437,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="320dp"
                 android:background="#fff"
                 android:orientation="vertical"
                 android:paddingLeft="20dp"
@@ -463,6 +463,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight="0.4"
+                            android:layout_marginTop="15dp"
                             android:text="NOMBRE"
                             android:textColor="#000"
                             android:textSize="12sp" />
@@ -493,6 +494,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight="0.4"
+                            android:layout_marginTop="15dp"
                             android:text="APELLIDOS"
                             android:textColor="#000"
                             android:textSize="12sp" />
@@ -533,6 +535,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight="0.4"
+                            android:layout_marginTop="15dp"
                             android:text="EMAIL"
                             android:textColor="#000"
                             android:textSize="12sp" />
@@ -574,6 +577,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight="0.4"
+                            android:layout_marginTop="15dp"
                             android:text="TELEFONO"
                             android:textColor="#000"
                             android:textSize="12sp" />
@@ -616,6 +620,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight="0.4"
+                            android:layout_marginTop="15dp"
                             android:text="PAIS"
                             android:textColor="#000"
                             android:textSize="12sp" />
@@ -653,6 +658,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight="0.4"
+                            android:layout_marginTop="15dp"
                             android:text="PETICION ESPECIAL"
                             android:textColor="#000"
                             android:textSize="12sp" />
@@ -677,6 +683,15 @@
 
 
             </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:weightSum="1">
+
+        </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"

@@ -3,6 +3,7 @@ package itesloscabos.com.hotelapp;
 import android.*;
 import android.Manifest;
 import android.app.Dialog;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -62,6 +63,8 @@ public class MapIndexActivity extends AppCompatActivity implements OnMapReadyCal
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
 
         if (googleServiceAvailable()) {
             setContentView(R.layout.activity_map_index);
@@ -77,6 +80,14 @@ public class MapIndexActivity extends AppCompatActivity implements OnMapReadyCal
 
         fechass.setText(AppState.fechas);
         persona.setText(AppState.personas);
+
+        ImageView Regre=(ImageView)findViewById(R.id.RGMapa);
+        Regre.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
     }
 
 

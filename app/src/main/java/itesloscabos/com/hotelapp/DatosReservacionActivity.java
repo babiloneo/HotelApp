@@ -1,6 +1,7 @@
 package itesloscabos.com.hotelapp;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -39,6 +40,14 @@ public class DatosReservacionActivity extends AppCompatActivity {
         //ImageView este= (ImageView)findViewById(R.id.prueba123);
         obtenerIDS();
         DatosReservacion();
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        ImageView Regre=(ImageView)findViewById(R.id.RIDatos);
+        Regre.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
         nexyView();
     }
 
@@ -83,6 +92,7 @@ public class DatosReservacionActivity extends AppCompatActivity {
         Rules();
 
         Button cont=(Button)findViewById(R.id.continuar);
+
         cont.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -1,5 +1,6 @@
 package itesloscabos.com.hotelapp;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Parcelable;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
@@ -35,7 +36,6 @@ import itesloscabos.com.hotelapp.cliente.clients;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
 public class descripActivity extends AppCompatActivity {
 
     private static final String TAG = "PRUEBA";
@@ -67,6 +67,7 @@ public class descripActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_descrip);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         sliderDotaPanel=(LinearLayout)findViewById(R.id.SliderDota2);
 
         nombre = (TextView)findViewById(R.id.txv_nombre);
@@ -86,6 +87,14 @@ public class descripActivity extends AppCompatActivity {
 
         info=(Button)findViewById(R.id.desc_mapa);
         ventanaMapa();
+        ImageView Regre=(ImageView)findViewById(R.id.REDetalle);
+        Regre.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent nextViewIndex = new Intent(descripActivity.this,IndexActivity.class);
+                startActivity(nextViewIndex);
+            }
+        });
 
         descripcion();
 
@@ -203,8 +212,10 @@ public class descripActivity extends AppCompatActivity {
         info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String propiedad = getIntent().getExtras().getString("propiedad");
                 Intent go =new Intent(descripActivity.this,InfoHotelActivity.class);
+                Bundle datos=new Bundle();
+                datos.putString("titulo",nombre.getText().toString());
+                go.putExtras(datos);
                 startActivity(go);
             }
         });

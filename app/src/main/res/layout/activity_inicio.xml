@@ -27,9 +27,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
-                android:weightSum="1"
-                android:gravity="end"
-                >
+                android:weightSum="4">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:textColor="#FFF"
+                    android:textAlignment="viewStart"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:text="Hoteles" />
+
+                <ImageButton
+                    android:id="@+id/imageButton2"
+                    android:layout_width="0dp"
+                    android:layout_gravity="end"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/ic_settings" />
 
             </LinearLayout>
 
@@ -99,7 +116,7 @@
                         android:layout_weight="0.8"
                         android:background="#fff"
                         android:ems="10"
-                        android:text="LA Habana"
+                        android:text="La Habana"
                         android:hint="Nombre del destino"
                         android:inputType="text" />
 
@@ -413,44 +430,7 @@
         </LinearLayout>
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.7"
-            android:orientation="horizontal"
-            android:background="@drawable/redondeo"
-            android:weightSum="10"
-            >
 
-            <ImageButton
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:background="@android:color/transparent"
-                android:src="@drawable/ic_loyalty"/>
-            <ImageButton
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:background="@android:color/transparent"
-                android:src="@drawable/ic_local_hotel"/>
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="4">
-
-            </LinearLayout>
-
-            <ImageButton
-                android:id="@+id/imageButton2"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:background="@android:color/transparent"
-                android:foregroundGravity="right"
-                android:src="@drawable/ic_settings" />
-
-        </LinearLayout>
 
 
     </LinearLayout>

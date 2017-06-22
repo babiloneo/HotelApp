@@ -1,6 +1,7 @@
 package itesloscabos.com.hotelapp;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.StringTokenizer;
+import android.widget.ImageView;
 
 public class InformacionPagoActivity extends AppCompatActivity {
     Button confirmar;
@@ -22,6 +24,16 @@ public class InformacionPagoActivity extends AppCompatActivity {
         obtenerDatosIntent();
         obtenerIDS();
         setearValores();
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        ImageView Regre=(ImageView)findViewById(R.id.RGinfoPago);
+        Regre.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
        confirmar = (Button)findViewById(R.id.Complete);
         irFinal();
 

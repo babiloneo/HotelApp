@@ -1,6 +1,7 @@
 package itesloscabos.com.hotelapp;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.AsyncTask;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
@@ -8,10 +9,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,6 +51,7 @@ public class IndexActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_index);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         //obtengolos datos de mi ventana inicio
 
         procesoCircular=(ProgressBar)findViewById(R.id.ProgressBarCircular);
@@ -58,12 +62,22 @@ public class IndexActivity extends AppCompatActivity {
 
         TextView fechass=(TextView)findViewById(R.id.txt_fechas);
         TextView persona=(TextView)findViewById(R.id.textView10);
+        TextView titulo=(TextView)findViewById(R.id.ind_titulo);
+
+        ImageView Regre=(ImageView)findViewById(R.id.REIndex);
+        Regre.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent nextViewIndex = new Intent(IndexActivity.this,InicioActivity.class);
+                startActivity(nextViewIndex);
+            }
+        });
 
         //Envia los titulos a la ventana index
 
         fechass.setText(AppState.fechas);
         persona.setText(AppState.personas);
-
+        titulo.setText("Hoteles en "+getIntent().getExtras().getString("destino"));
          map=(Button)findViewById(R.id.mapa);
 
          irMapa();
@@ -84,6 +98,7 @@ public class IndexActivity extends AppCompatActivity {
         * LAP=La Paz
         * MZT=Mazatlan
         * ACA=Acapulco
+        * TLC=Toluca
         * */
 
 
@@ -97,7 +112,8 @@ public class IndexActivity extends AppCompatActivity {
                 CurrencyInfo valor=response.body().getCurrencyInfo();
                 final float euros=valor.getExchangeRate();
 
-                if(response.isSuccessful()){
+                if(response.isSuccessful())
+                {
 
                     indexResult =response.body().getResult();
 
@@ -111,9 +127,9 @@ public class IndexActivity extends AppCompatActivity {
                             @Override
                             public void onResponse(Call<disponibilidad> call, Response<disponibilidad> response) {
 
-
-                                if(response.isSuccessful()){
-
+                                if(response.isSuccessful())
+                                {
+                                    DecimalFormat df = new DecimalFormat("#.00");
                                     String transactionId="";
                                     float taxRate;
                                     nuevob = new ArrayList<detallesCuartos>(2);
@@ -160,8 +176,8 @@ public class IndexActivity extends AppCompatActivity {
                                                             detalles.setTransactionId(transactionId);
                                                             detalles.setTaxRate(taxRate);
                                                             datosCuarto h = rooms.get(gt);
-                                                            detalles.setAverage(euros*h.getAverage());
-                                                            detalles.setTotal(euros*h.getTotal());
+                                                            detalles.setAverage(Float.parseFloat(df.format(euros*h.getAverage())));
+                                                            detalles.setTotal(Float.parseFloat(df.format(euros*h.getTotal())));
                                                             detalles.setRateKey(h.getRateKey());
                                                             detalles.setCode(h.getCode());
                                                             nuevob.add(detalles);
@@ -174,6 +190,7 @@ public class IndexActivity extends AppCompatActivity {
                                     }
                                 }else
                                 {
+                                    Log.e(TAG, "AAADDDFFFF ");
                                     switch(response.code()){
                                         case 404:
                                             Log.e(TAG, "Server Return Error: Not Faund "+response.errorBody());
@@ -203,17 +220,20 @@ public class IndexActivity extends AppCompatActivity {
 
                 }else{
                     Log.e(TAG, "onResponse: "+response.errorBody());
+
                 }
 
                 AppState.index=indexResult;
                 indexResult =response.body().getResult();
                 adapter=new IndexAdapter(getApplicationContext(),R.layout.listview_index,indexResult);
                 listaHoteles.setAdapter(adapter);
+
             }
 
             @Override
             public void onFailure(Call<Hotel> call, Throwable t) {
                 Log.e(TAG, "onFailure: "+t.getMessage());
+
             }
         });
     }
