@@ -92,7 +92,6 @@ public class IndexAdapter extends ArrayAdapter<hotelResult>{
                             x=w.getAverage();
                         }else if(w.getName().equals("Habitación Doble") || w.getName().equals("Double Room")){
                             z=w.getAverage();
-                            //Log.e(TAG, "z': "+position +": "+w.getName()+" "+z);
                         }
                     }else
                     {

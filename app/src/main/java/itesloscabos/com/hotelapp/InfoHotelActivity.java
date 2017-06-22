@@ -142,7 +142,7 @@ public class InfoHotelActivity extends AppCompatActivity implements OnMapReadyCa
 
             }
         });
-        //GeoLocate();
+       // GeoLocate();
 
     }
 
@@ -181,32 +181,29 @@ public class InfoHotelActivity extends AppCompatActivity implements OnMapReadyCa
     }
 
     public void GeoLocate() {
+        TextView caja =(TextView)findViewById(R.id.inf_nombre);
 
-        List<datos>datosHotel=AppState.result;
-        if(datosHotel!=null){
-            for(int x=0;x<datosHotel.size();x++){
-                datos p = datosHotel.get(x);
+        String buscar=caja.getText().toString();
+        Geocoder gc = new Geocoder(this);
+        try {
+            Log.i(TAG, "nombre a buscar"+buscar);
+            List<Address> list =gc.getFromLocationName(buscar,1);
 
-                double latitud = p.getLatitude();
-                double longitud = p.getLongitude();
-
-                Log.e(TAG, "segundo: "+latitud+" "+longitud);
-                if(latitud!=0 && longitud!=0){
-                    goToLocationZoom(latitud, longitud, 2);
+            Address address =list.get(0);
+            String locality=address.getLocality();
+            // String locality = address.getLocality();
+            double lat=address.getLatitude();
+            double log= address.getLongitude();
+            goToLocationZoom(lat,log,2);
 
                     MarkerOptions marker = new MarkerOptions()
-                            .title(p.getName())
-                            .position(new LatLng(latitud, longitud));
+                            .title(locality)
+                            .position(new LatLng(lat, log));
                     mGoogleMap.addMarker(marker);
-                }else{
-                    goToLocationZoom(39.008224,-76.8984527, 1);
-                }
 
-            }
-        }else{
-            goToLocationZoom(39.008224,-76.8984527, 1);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-
 
     }
 

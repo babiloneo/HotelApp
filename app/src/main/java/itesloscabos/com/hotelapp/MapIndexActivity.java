@@ -142,11 +142,6 @@ public class MapIndexActivity extends AppCompatActivity implements OnMapReadyCal
         //seteando localizacion
 
     }
-    private void goToLocation(double lat, double log){
-        LatLng lln = new LatLng(lat,log);
-        CameraUpdate update = CameraUpdateFactory.newLatLng(lln);
-        mGoogleMap.moveCamera(update);
-    }
 
     private void goToLocationZoom(double latitud, double longitud,float zoom) {
         LatLng ll =new LatLng(latitud,longitud);
