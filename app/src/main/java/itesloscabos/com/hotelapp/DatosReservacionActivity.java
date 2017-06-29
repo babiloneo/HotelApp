@@ -30,8 +30,8 @@ public class DatosReservacionActivity extends AppCompatActivity {
     String transactionId,totalP,key;
     float taxRate;
 
-    String RuleTransactionId,country,zipCode;
-
+    String RuleTransactionId,country,zipCode,state,city;
+    Boolean canHold;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -99,6 +99,8 @@ public class DatosReservacionActivity extends AppCompatActivity {
                 Intent go = new Intent(DatosReservacionActivity.this,InformacionPagoActivity.class);
                 Bundle datos= new Bundle();
                 datos.putString("id",RuleTransactionId);
+                datos.putString("state",state);
+                datos.putString("city",city);
                 datos.putString("country",country);
                 datos.putString("zipCode",zipCode);
                 datos.putString("total",totalP);
@@ -118,10 +120,13 @@ public class DatosReservacionActivity extends AppCompatActivity {
                 if(response.isSuccessful()){
 
                     RuleTransactionId=response.body().getTransactionId();
+                    canHold=response.body().getCanHold();
                     List<Result> result=response.body().getResult();
                     if(result!=null){
                         for(int x=0;x<result.size();x++){
                             Result p =result.get(x);
+                            city=p.getCity();
+                            state=p.getState();
                             country =p.getCountry();
                             zipCode =p.getZipCode();
 

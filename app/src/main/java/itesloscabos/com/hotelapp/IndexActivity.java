@@ -28,6 +28,7 @@ import itesloscabos.com.hotelapp.Models.detallesCuartos;
 import itesloscabos.com.hotelapp.Models.disponibilidad;
 import itesloscabos.com.hotelapp.Models.hotelResult;
 import itesloscabos.com.hotelapp.Models.resdispo;
+import itesloscabos.com.hotelapp.Models.serverBroken.serverBroken;
 import itesloscabos.com.hotelapp.adapters.IndexAdapter;
 import itesloscabos.com.hotelapp.cliente.clients;
 import retrofit2.Call;
@@ -105,15 +106,13 @@ public class IndexActivity extends AppCompatActivity {
         clients.getInstance().getService().ObtenerListaHotel("Bearer " + AppState.accessToken,"TEST",AppState.iata,AppState.destino,AppState.llegada,AppState.salida,AppState.cuarto,AppState.adultos,AppState.ninos).enqueue(new Callback<Hotel>() {
             @Override
             public void onResponse(Call<Hotel> call, Response<Hotel> response) {
-                final int h = response.body().getCount();
-                String y = response.body().getProcessTime();
-                Boolean z = response.body().getCachedResponse();
-                Boolean a = response.body().getSuccess();
-                CurrencyInfo valor=response.body().getCurrencyInfo();
-                final float euros=valor.getExchangeRate();
+
+
 
                 if(response.isSuccessful())
                 {
+                    CurrencyInfo valor=response.body().getCurrencyInfo();
+                    final float euros=valor.getExchangeRate();
 
                     indexResult =response.body().getResult();
 
@@ -190,7 +189,6 @@ public class IndexActivity extends AppCompatActivity {
                                     }
                                 }else
                                 {
-                                    Log.e(TAG, "AAADDDFFFF ");
                                     switch(response.code()){
                                         case 404:
                                             Log.e(TAG, "Server Return Error: Not Faund "+response.errorBody());
@@ -198,6 +196,7 @@ public class IndexActivity extends AppCompatActivity {
                                             break;
                                         case 500:
                                             Log.e(TAG, "Server Return Error: Server Is Broken: "+response.errorBody());
+                                            //serverBroken server=response.
                                             p.setTotal(0);
                                             break;
                                         default:
@@ -211,7 +210,6 @@ public class IndexActivity extends AppCompatActivity {
                             @Override
                             public void onFailure(Call<disponibilidad> call, Throwable t) {
                                 Log.e(TAG, "onFailure: "+t.getMessage());
-                                p.setTotal(0);
                             }
                         });
                         //fin del segundo peticion

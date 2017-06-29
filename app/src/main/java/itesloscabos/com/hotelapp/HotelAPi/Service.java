@@ -1,4 +1,12 @@
 package itesloscabos.com.hotelapp.HotelAPi;
+import java.util.List;
+
+import itesloscabos.com.hotelapp.Models.HoldSell.GetHold;
+import itesloscabos.com.hotelapp.Models.HoldSell.GetPayment;
+import itesloscabos.com.hotelapp.Models.HoldSell.GetSell;
+import itesloscabos.com.hotelapp.Models.HoldSell.Hold;
+import itesloscabos.com.hotelapp.Models.HoldSell.Payment;
+import itesloscabos.com.hotelapp.Models.HoldSell.ResultHold;
 import itesloscabos.com.hotelapp.Models.Hotel;
 import itesloscabos.com.hotelapp.Models.LoginRespuesta;
 import itesloscabos.com.hotelapp.Models.Rules.Rules;
@@ -48,4 +56,18 @@ public interface Service {
                          @Header("X-Environment") String Environment,
                          @Query("rateKey") String rateKey,
                          @Query("transactionId") String transactionId);
+
+    @POST("v1/Hotel/Hold")
+    Call<GetHold> getHold(@Body Hold hold,
+                          @Header("Authorization") String token,
+                          @Header("X-Environment") String Environment);
+
+    @POST("v1/Payment/Payment")
+    Call<GetPayment> getPayment(@Body Payment payment,
+                                @Header("Authorization") String token,
+                                @Header("X-Environment") String Environment);
+    @POST("v1/Hotel/Sell")
+    Call<GetSell> getSell(@Body Hold Hold,
+                          @Header("Authorization") String token,
+                          @Header("X-Environment") String Environment);
 }

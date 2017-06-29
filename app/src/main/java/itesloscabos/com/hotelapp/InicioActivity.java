@@ -308,15 +308,9 @@ public class InicioActivity extends AppCompatActivity implements DatePickerDialo
         return true;
     }
     private boolean validestino(){
-        String cuar=cuartos.getText().toString();
-        String adu=Adultos.getText().toString();
-        String ni=ninos.getText().toString();
+
         String des=destino.getText().toString();
-        String sali=salida.getText().toString();
-        String ll=llegada.getText().toString();
-        int C=Integer.parseInt(cuar);
-        int A=Integer.parseInt(adu);
-        int N=Integer.parseInt(ni);
+
         if(des.isEmpty()){
             destino.setError("Llene este campo");
             return false;

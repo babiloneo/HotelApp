@@ -112,13 +112,14 @@
                             android:textSize="12dp" />
 
                         <EditText
-                            android:id="@+id/editText"
+                            android:id="@+id/tar_numero"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight="0.5"
                             android:background="@android:color/white"
                             android:ems="10"
                             android:hint="Ingrese numero de la tarjeta"
+                            android:text="5517880076047158"
                             android:inputType="textPersonName"
                             android:lines="1"
                             android:textSize="16sp" />
@@ -163,6 +164,7 @@
                             android:textSize="12sp" />
 
                         <EditText
+                            android:id="@+id/tar_nombre"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight="0.5"
@@ -170,6 +172,7 @@
                             android:ems="10"
                             android:hint="ingrese el nombre igual que en la tarjeta"
                             android:inputType="textPersonName"
+                            android:text="Cesar Felix"
                             android:lines="1"
                             android:textSize="16sp" />
 
@@ -203,12 +206,14 @@
                             android:textSize="12sp" />
 
                         <EditText
+                            android:id="@+id/tar_expira"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight="0.5"
                             android:background="@android:color/white"
                             android:ems="10"
                             android:hint="MM/AAAA"
+                            android:text="09/2016"
                             android:inputType="textPersonName"
                             android:lines="1"
                             android:textSize="16sp" />
@@ -234,12 +239,14 @@
                             android:textSize="12sp" />
 
                         <EditText
+                            android:id="@+id/tar_ccv"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight="0.5"
                             android:background="@android:color/white"
                             android:ems="10"
                             android:hint="CCV"
+                            android:text="861"
                             android:inputType="textPersonName"
                             android:lines="1"
                             android:textSize="16sp" />
@@ -275,6 +282,7 @@
                         android:weightSum="1">
 
                         <TextView
+                            android:id="@+id/textView5"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_margin="2dp"
@@ -468,12 +476,14 @@
                             android:textSize="12sp" />
 
                         <EditText
+                            android:id="@+id/dat_nombre"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight="0.5"
                             android:background="@android:color/white"
                             android:ems="10"
                             android:hint="ingrese su nombre"
+                            android:text="Cesar"
                             android:inputType="textPersonName"
                             android:lines="1"
                             android:textSize="16sp" />
@@ -499,12 +509,14 @@
                             android:textSize="12sp" />
 
                         <EditText
+                            android:id="@+id/dat_apellidos"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight="0.5"
                             android:background="@android:color/white"
                             android:ems="10"
                             android:hint="ingrese sus apellidos"
+                            android:text="Felix"
                             android:inputType="textPersonName"
                             android:lines="1"
                             android:textSize="16sp" />
@@ -540,12 +552,14 @@
                             android:textSize="12sp" />
 
                         <EditText
+                            android:id="@+id/dat_correo"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight="0.5"
                             android:background="@android:color/white"
                             android:ems="10"
                             android:hint="ingrese su direccion de correo"
+                            android:text="cronica_20@hotmail.com"
                             android:inputType="textPersonName"
                             android:lines="1"
                             android:textSize="16sp" />
@@ -581,12 +595,14 @@
                             android:textSize="12sp" />
 
                         <EditText
+                            android:id="@+id/dat_telefono"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight="0.5"
                             android:background="@android:color/white"
                             android:ems="10"
                             android:hint="Ingrese su numero telefonico"
+                            android:text="6241548201"
                             android:inputType="textPersonName"
                             android:lines="1"
                             android:textSize="16sp" />
@@ -623,12 +639,14 @@
                             android:textSize="12sp" />
 
                         <EditText
+                            android:id="@+id/dat_pais"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight="0.5"
                             android:background="@android:color/white"
                             android:ems="10"
                             android:hint="Ingrese su Pais"
+                            android:text="Mexico"
                             android:inputType="textPersonName"
                             android:lines="1"
                             android:textSize="16sp" />
@@ -661,12 +679,14 @@
                             android:textSize="12sp" />
 
                         <EditText
+                            android:id="@+id/dat_peticion"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight="0.5"
                             android:background="@android:color/white"
                             android:ems="10"
                             android:hint="ingrese si requiere una peticion especial"
+                            android:text="nada"
                             android:inputType="textPersonName"
                             android:lines="1"
                             android:textSize="16sp" />

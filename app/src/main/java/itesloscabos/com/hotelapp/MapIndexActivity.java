@@ -71,7 +71,7 @@ public class MapIndexActivity extends AppCompatActivity implements OnMapReadyCal
             InitMap();
         }
 
-        GeoLocate();
+        //GeoLocate();
 
         TextView fechass=(TextView)findViewById(R.id.map_fechas);
         TextView persona=(TextView)findViewById(R.id.map_personas);

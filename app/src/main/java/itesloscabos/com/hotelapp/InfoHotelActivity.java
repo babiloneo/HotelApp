@@ -66,6 +66,7 @@ public class InfoHotelActivity extends AppCompatActivity implements OnMapReadyCa
             setContentView(R.layout.activity_info_hotel);
             InitMap();
         }
+       // GeoLocate();
         sliderDotaPanel=(LinearLayout)findViewById(R.id.SliderDota);
 
         List<datos>datosHotel=AppState.result;
@@ -170,7 +171,7 @@ public class InfoHotelActivity extends AppCompatActivity implements OnMapReadyCa
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mGoogleMap = googleMap;
-        //goToLocationZoom(39.008224,-76.8984527,2);
+        goToLocationZoom(39.008224,-76.8984527,2);
     }
 
     private void goToLocationZoom(double latitud, double longitud,float zoom) {
@@ -181,10 +182,11 @@ public class InfoHotelActivity extends AppCompatActivity implements OnMapReadyCa
     }
 
     public void GeoLocate() {
+
         TextView caja =(TextView)findViewById(R.id.inf_nombre);
 
         String buscar=caja.getText().toString();
-        Geocoder gc = new Geocoder(this);
+        Geocoder gc = new Geocoder(InfoHotelActivity.this);
         try {
             Log.i(TAG, "nombre a buscar"+buscar);
             List<Address> list =gc.getFromLocationName(buscar,1);
@@ -194,7 +196,7 @@ public class InfoHotelActivity extends AppCompatActivity implements OnMapReadyCa
             // String locality = address.getLocality();
             double lat=address.getLatitude();
             double log= address.getLongitude();
-            goToLocationZoom(lat,log,2);
+            goToLocationZoom(lat,-log,2);
 
                     MarkerOptions marker = new MarkerOptions()
                             .title(locality)
