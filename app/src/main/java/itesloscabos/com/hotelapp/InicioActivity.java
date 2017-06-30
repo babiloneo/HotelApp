@@ -3,11 +3,18 @@ package itesloscabos.com.hotelapp;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.support.design.widget.AppBarLayout;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -23,11 +30,16 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.List;
 import java.util.StringTokenizer;
 
+import io.realm.Realm;
+import io.realm.RealmResults;
+import itesloscabos.com.hotelapp.BaseDate.servicios;
 import itesloscabos.com.hotelapp.Models.AppState;
 import itesloscabos.com.hotelapp.Models.Hotel;
 import itesloscabos.com.hotelapp.Models.LoginRespuesta;
+import itesloscabos.com.hotelapp.Models.Reservaciones.Reservar;
 import itesloscabos.com.hotelapp.Models.hotelResult;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -49,8 +61,10 @@ public class InicioActivity extends AppCompatActivity implements DatePickerDialo
     private TextView Adultos;
     private TextView ninos;
     TextView calendario;
-
+    Realm realm;
     int pssicion;
+
+    ImageView reserva;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,12 +80,46 @@ public class InicioActivity extends AppCompatActivity implements DatePickerDialo
         Adultos=(TextView)findViewById(R.id.txt_adultos);
         ninos=(TextView)findViewById(R.id.txt_ninos);
 
-
-
+        reserva=(ImageView)findViewById(R.id.go_reser);
+        ifReservaciones();
         add_rem();
         ObtenerDatosLogin();
         mostrarTarifas();
+        realm = Realm.getDefaultInstance();
     }
+
+    private void ifReservaciones() {
+        reserva.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent go = new Intent(InicioActivity.this,ReservacionesActivity.class);
+                startActivity(go);
+            }
+        });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu,menu);
+        return true;
+    }
+
+
+    /**
+     * Esconde la ActionBar/Toolbar.
+     */
+    public void hideActionBar() {
+        getSupportActionBar().hide();
+    }
+
+    /**
+     * Muestra la ActionBar/ToolBar.
+     */
+    public void showActionBar() {
+        getSupportActionBar().show();
+    }
+
+
 
     public void calendario1(View view){
         pssicion=1;

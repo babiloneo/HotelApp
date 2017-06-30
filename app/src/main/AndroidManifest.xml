@@ -21,6 +21,7 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
+        android:name=".BaseDate.BDAplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="Hotel"
@@ -52,7 +53,8 @@
         <activity android:name=".DatosReservacionActivity" />
         <activity android:name=".InformacionPagoActivity" />
         <activity android:name=".HabitacionActivity" />
-        <activity android:name=".ConfimacionActivity"></activity>
+        <activity android:name=".ConfimacionActivity" />
+        <activity android:name=".ReservacionesActivity"></activity>
     </application>
 
 </manifest>

@@ -11,12 +11,21 @@ public class Reservar extends RealmObject {
     String referencia;
     String nombre;
     String direccion;
+    String ciudad;
     String habitacion;
     String viajeros;
     String llegada;
     String salida;
     String total;
     String Anombre;
+
+    public String getCiudad() {
+        return ciudad;
+    }
+
+    public void setCiudad(String ciudad) {
+        this.ciudad = ciudad;
+    }
 
     public String getReferencia() {
         return referencia;

@@ -40,13 +40,13 @@
                     android:text="Hotel" />
 
                 <ImageButton
-                    android:id="@+id/imageButton2"
+                    android:id="@+id/go_reser"
                     android:layout_width="0dp"
                     android:layout_gravity="end"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@android:color/transparent"
-                    android:src="@drawable/ic_settings" />
+                    android:src="@drawable/ic_folder_special" />
 
             </LinearLayout>
 
@@ -103,6 +103,7 @@
                     android:weightSum="1">
 
                     <ImageView
+                        android:id="@+id/reservaciones"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="0.2"

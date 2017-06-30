@@ -365,14 +365,12 @@ public class InformacionPagoActivity extends AppCompatActivity {
         confirmar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 PonerEnHold();
             }
         });
     }
 
     public void termina(){
-
         if(statusx.equals("1")){
             Intent go = new Intent(InformacionPagoActivity.this,ConfimacionActivity.class);
             Bundle datos=new Bundle();

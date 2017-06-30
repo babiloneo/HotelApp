@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -12,7 +13,10 @@ import android.widget.TextView;
 import java.util.List;
 
 import io.realm.Realm;
+import io.realm.RealmResults;
+import itesloscabos.com.hotelapp.BaseDate.servicios;
 import itesloscabos.com.hotelapp.Models.AppState;
+import itesloscabos.com.hotelapp.Models.Reservaciones.Reservar;
 import itesloscabos.com.hotelapp.Models.datos;
 
 public class ConfimacionActivity extends AppCompatActivity {
@@ -22,6 +26,8 @@ public class ConfimacionActivity extends AppCompatActivity {
     Realm realm;
     String referenciax;
     TextView nombreH,direccion,ciudad,habitacion,personas,llegada,salida,subtotal,iva,total,Anombre,correo,telefono,Aciudad,peticion;
+    private static final String TAG = "PRUEBA";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +44,8 @@ public class ConfimacionActivity extends AppCompatActivity {
         go=(Button)findViewById(R.id.Principio);
         goPrincipio();
 
-      //  realm = Realm.getDefaultInstance();
+        realm = Realm.getDefaultInstance();
+
         obtenerIDS();
         DatosReservacion();
     }
@@ -86,7 +93,7 @@ public class ConfimacionActivity extends AppCompatActivity {
         telefono.setText(getIntent().getExtras().getString("telefono"));
         Aciudad.setText(getIntent().getExtras().getString("ciudad"));
         peticion.setText(getIntent().getExtras().getString("peticion"));
-        String referenciax=getIntent().getExtras().getString("referencia");
+        referenciax=getIntent().getExtras().getString("referencia");
         subtotal.setText(totalx);
         if(taxRate==0){
             iva.setText("IVA Incluido");
@@ -103,13 +110,39 @@ public class ConfimacionActivity extends AppCompatActivity {
 
     private void GuardarDB() {
 
+        servicios nuevo=new servicios(Realm.getDefaultInstance());
+        nuevo.NuevaReservacion(referenciax,nombreH.getText().toString(),direccion.getText().toString(),ciudad.getText().toString(),habitacion.getText().toString(),
+                personas.getText().toString(),llegada.getText().toString(),salida.getText().toString(),total.getText().toString(),Anombre.getText().toString());
+
+       /* realm.executeTransactionAsync(new Realm.Transaction() {
+            @Override
+            public void execute(Realm bgRealm) {
+                Reservar nuevo = bgRealm.createObject(Reservar.class);
+                nuevo.setReferencia(referenciax);
+                nuevo.setNombre(nombreH.getText().toString());
+                nuevo.setDireccion(direccion.getText().toString());
+                nuevo.setCiudad(ciudad.getText().toString());
+                nuevo.setHabitacion(habitacion.getText().toString());
+                nuevo.setViajeros(personas.getText().toString());
+                nuevo.setLlegada(llegada.getText().toString());
+                nuevo.setSalida(salida.getText().toString());
+                nuevo.setTotal(total.getText().toString());
+                nuevo.setAnombre(Anombre.getText().toString());
+            }
+        }, new Realm.Transaction.OnSuccess() {
+            @Override
+            public void onSuccess() {
+                Log.e(TAG, "Guardado Correctamente!!");
+            }
+        }, new Realm.Transaction.OnError() {
+            @Override
+            public void onError(Throwable error) {
+                Log.e(TAG, "Database: "+error.getMessage());
+            }
+        });*/
+
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        realm.close();
-    }
 
     private void goPrincipio() {
 
