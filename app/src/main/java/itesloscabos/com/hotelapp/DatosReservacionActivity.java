@@ -105,6 +105,7 @@ public class DatosReservacionActivity extends AppCompatActivity {
                 datos.putString("zipCode",zipCode);
                 datos.putString("total",totalP);
                 datos.putFloat("iva",taxRate);
+                datos.putString("habitacion",habitacion.getText().toString());
                 go.putExtras(datos);
                 startActivity(go);
             }

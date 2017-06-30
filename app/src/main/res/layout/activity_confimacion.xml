@@ -155,7 +155,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/textView39"
+                        android:id="@+id/conf_nombre"
                         android:layout_width="match_parent"
                         android:layout_height="17dp"
                         android:textSize="16sp"
@@ -166,7 +166,7 @@
                         tools:layout_editor_absoluteY="266dp" />
 
                     <TextView
-                        android:id="@+id/textView40"
+                        android:id="@+id/conf_direccion"
                         android:layout_width="match_parent"
                         android:layout_height="17dp"
                         android:text="Calle 58 N°455, Centro, Mérida, Yucatan, C.P. 97000"
@@ -174,7 +174,7 @@
                         tools:layout_editor_absoluteY="283dp" />
 
                     <TextView
-                        android:id="@+id/textView41"
+                        android:id="@+id/conf_ciudad"
                         android:layout_width="match_parent"
                         android:layout_height="19dp"
                         android:text="Mérida, Yucatán"
@@ -205,7 +205,7 @@
                             tools:layout_editor_absoluteY="334dp" />
 
                         <TextView
-                            android:id="@+id/textView28"
+                            android:id="@+id/conf_habitacion"
                             android:layout_width="match_parent"
                             android:layout_height="17dp"
                             android:textColor="#000"
@@ -231,7 +231,7 @@
                             tools:layout_editor_absoluteY="334dp" />
 
                         <TextView
-                            android:id="@+id/textView29"
+                            android:id="@+id/conf_personas"
                             android:layout_width="match_parent"
                             android:layout_height="18dp"
                             android:textColor="#000"
@@ -265,7 +265,7 @@
                             tools:layout_editor_absoluteY="378dp" />
 
                         <TextView
-                            android:id="@+id/textView32"
+                            android:id="@+id/conf_llegada"
                             android:layout_width="match_parent"
                             android:layout_height="22dp"
                             android:text="24/01/2016"
@@ -291,7 +291,7 @@
                             tools:layout_editor_absoluteY="378dp" />
 
                         <TextView
-                            android:id="@+id/textView33"
+                            android:id="@+id/conf_salida"
                             android:layout_width="match_parent"
                             android:layout_height="21dp"
                             android:text="26/01/2016"
@@ -365,7 +365,7 @@
                             android:orientation="vertical">
 
                             <TextView
-                                android:id="@+id/textView23"
+                                android:id="@+id/conf_subTotal"
                                 android:layout_width="match_parent"
                                 android:layout_height="18dp"
                                 android:text="$1,350.00"
@@ -376,7 +376,7 @@
                                 tools:layout_editor_absoluteY="438dp" />
 
                             <TextView
-                                android:id="@+id/textView25"
+                                android:id="@+id/conf_iva"
                                 android:layout_width="match_parent"
                                 android:layout_height="17dp"
                                 android:text="IVA Incluido"
@@ -389,7 +389,7 @@
                                 tools:layout_editor_absoluteY="465dp" />
 
                             <TextView
-                                android:id="@+id/textView19"
+                                android:id="@+id/conf_total"
                                 android:layout_width="match_parent"
                                 android:layout_height="18dp"
                                 android:text="$1,350.00"
@@ -444,7 +444,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textView22"
+                    android:id="@+id/conf_Anombre"
                     android:layout_width="match_parent"
                     android:layout_height="26dp"
                     android:textColor="#000"
@@ -453,7 +453,7 @@
                     tools:layout_editor_absoluteY="593dp" />
 
                 <TextView
-                    android:id="@+id/textView45"
+                    android:id="@+id/conf_correo"
                     android:layout_width="match_parent"
                     android:layout_height="22dp"
                     android:text="fperez@gmail.com"
@@ -462,7 +462,7 @@
                     tools:layout_editor_absoluteY="621dp" />
 
                 <TextView
-                    android:id="@+id/textView44"
+                    android:id="@+id/conf_telefono"
                     android:layout_width="match_parent"
                     android:layout_height="22dp"
                     android:text="62412345678"
@@ -471,7 +471,7 @@
                     tools:layout_editor_absoluteY="642dp" />
 
                 <TextView
-                    android:id="@+id/textView43"
+                    android:id="@+id/conf_Aciudad"
                     android:layout_width="match_parent"
                     android:layout_height="28dp"
                     android:text="México"
@@ -480,7 +480,7 @@
                     tools:layout_editor_absoluteY="664dp" />
 
                 <TextView
-                    android:id="@+id/textView46"
+                    android:id="@+id/conf_peticion"
                     android:layout_width="match_parent"
                     android:layout_height="32dp"
                     android:text="Sin petición especial"

@@ -14,7 +14,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import io.realm.Realm;
 import itesloscabos.com.hotelapp.Models.AppState;
 import itesloscabos.com.hotelapp.Models.HoldSell.Contact;
 import itesloscabos.com.hotelapp.Models.HoldSell.Customer;
@@ -44,7 +46,10 @@ public class InformacionPagoActivity extends AppCompatActivity {
     EditText d_nombre,d_apellidos,d_correo,d_telefono,d_pais,d_peticion;
 
     Hold nuevo;
+    String habitacion;
 
+    String statusx="0";
+    String referenciax;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,18 +70,9 @@ public class InformacionPagoActivity extends AppCompatActivity {
        confirmar = (Button)findViewById(R.id.Complete);
         irFinal();
 
-    }
-
-    private void Reservacion() {
-        if(!PonerEnHold()){
-            return;
-        }
-
-        if(!MetodoDePagoPayment()){
-            return;
-        }
 
     }
+
 
     public void MetodoSell() {
 
@@ -86,18 +82,20 @@ public class InformacionPagoActivity extends AppCompatActivity {
 
                 if(response.isSuccessful()){
 
-                        String referencia;
-                        String status="";
+
                         List<ResultSell>resultSells=response.body().getResult();
                         if(resultSells!=null){
                             for(int x=0;x<resultSells.size();x++){
                                 ResultSell p = resultSells.get(x);
-                                referencia =p.getProviderReference();
-                                status=p.getDetail().getStatus();
-                                Log.e(TAG, "sell: "+referencia+" ststus: "+status);
-
+                                referenciax =p.getProviderReference();
+                                statusx=p.getDetail().getStatus();
+                                Log.e(TAG, "sell: "+referenciax+" ststus: "+statusx);
                             }
                         }
+
+                    if(statusx.equals("1")){
+                        termina();
+                    }
 
                 }else{
 
@@ -127,7 +125,7 @@ public class InformacionPagoActivity extends AppCompatActivity {
         });
     }
 
-    private boolean MetodoDePagoPayment() {
+    private void MetodoDePagoPayment() {
 
         Customer customer= new Customer(
                 "",
@@ -214,11 +212,10 @@ public class InformacionPagoActivity extends AppCompatActivity {
                 Log.e(TAG, "onFailure: "+t.getMessage());
             }
         });
-        return true;
     }
 
     private boolean PonerEnHold() {
-
+        statusx="0";
         Log.e(TAG, "checando: "+country+" "+city+" "+state+" "+zipCode);
 
         List<GuestList>guestLists=new ArrayList<GuestList>();
@@ -278,16 +275,19 @@ public class InformacionPagoActivity extends AppCompatActivity {
             public void onResponse(Call<GetHold> call, Response<GetHold> response) {
 
                 if(response.isSuccessful()){
-
+                    String reference="";
                     List<ResultHold> result=response.body().getResult();
                         if(result!=null){
 
                             for(int x=0;x<result.size();x++){
                                 ResultHold p =result.get(x);
-                                String reference=p.getProviderReference();
+                                reference=p.getProviderReference();
                                 Log.e(TAG, "refencia Hold: "+reference);
                             }
                         }
+                    if(reference!=""){
+                        MetodoDePagoPayment();
+                    }
                 }else{
                     switch(response.code()){
                         case 400:
@@ -358,7 +358,7 @@ public class InformacionPagoActivity extends AppCompatActivity {
         city=getIntent().getExtras().getString("city");
         country=getIntent().getExtras().getString("country");
         zipCode=getIntent().getExtras().getString("zipCode");
-
+        habitacion=getIntent().getExtras().getString("habitacion");
     }
 
     public void irFinal(){
@@ -366,10 +366,29 @@ public class InformacionPagoActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Reservacion();
-                Intent go = new Intent(InformacionPagoActivity.this,ConfimacionActivity.class);
-                startActivity(go);
+                PonerEnHold();
             }
         });
+    }
+
+    public void termina(){
+
+        if(statusx.equals("1")){
+            Intent go = new Intent(InformacionPagoActivity.this,ConfimacionActivity.class);
+            Bundle datos=new Bundle();
+            datos.putString("habitacion",habitacion);
+            datos.putString("total",total);
+            datos.putFloat("iva",taxRate);
+            datos.putString("nombre",d_nombre.getText().toString()+" "+d_apellidos.getText().toString());
+            datos.putString("correo",d_correo.getText().toString());
+            datos.putString("telefono",d_telefono.getText().toString());
+            datos.putString("ciudad",d_pais.getText().toString());
+            datos.putString("peticion",d_peticion.getText().toString());
+            datos.putString("referencia",referenciax);
+            go.putExtras(datos);
+            startActivity(go);
+        }else{
+            Toast.makeText(getApplicationContext(),"Error",Toast.LENGTH_SHORT).show();
+        }
     }
 }
